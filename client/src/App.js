@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
+import Button from '@material-ui/core/Button';
 
 import "./App.css";
+import Header from "./components/header/header.js";
+import SignInSide from "./components/login/login.js"
 
 class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
@@ -54,6 +57,10 @@ class App extends Component {
     }
     return (
       <div className="App">
+        <SignInSide></SignInSide>
+        {/* <Button variant="contained" color="primary">
+          Hello World
+    </Button>
         <h1>Good to Go!</h1>
         <p>Your Truffle Box is installed and ready.</p>
         <h2>Smart Contract Example</h2>
@@ -64,7 +71,7 @@ class App extends Component {
         <p>
           Try changing the value stored on <strong>line 40</strong> of App.js.
         </p>
-        <div>The stored value is: {this.state.storageValue}</div>
+        <div>The stored value is: {this.state.storageValue}</div> */}
       </div>
     );
   }
