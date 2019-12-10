@@ -16,12 +16,19 @@ import NotFound from "./containers/NotFound";
 export default function Routes({ appProps }) {
   return (
     <Switch>
+      {/* <div>
+      <h1>{appProps.specificAccount}</h1>
+      <h1>{appProps.storageValue}</h1>
+      </div> */}
+      
+      {/* <h1>{appProps.contract.address}</h1> */}
+      {/* <h1>{appProps.specificAccount}</h1> */}
       <AppliedRoute path="/" exact component={Home} appProps={appProps} />
       <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
-      {/* <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} />
-      <AuthenticatedRoute path="/settings" exact component={Settings} appProps={appProps} />
-      <AuthenticatedRoute path="/notes/new" exact component={NewNote} appProps={appProps} />
-      <AuthenticatedRoute path="/notes/:id" exact component={Notes} appProps={appProps} /> */}
+      {/* <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} /> */}
+      {/* <AuthenticatedRoute path="/settings" exact component={Settings} appProps={appProps} /> */}
+      {/* <AuthenticatedRoute path="/notes/new" exact component={NewNote} appProps={appProps} /> */}
+      {/* <AuthenticatedRoute path="/notes/:id" exact component={Notes} appProps={appProps} /> */}
       {/* Finally, catch all unmatched routes */}
       <Route component={NotFound} />
     </Switch>

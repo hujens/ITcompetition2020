@@ -15,18 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Background from "../assets/poster.jpg";
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="http://ic.ibi.ethz.ch/">
-                Your Website
-      </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -41,7 +30,7 @@ const useStyles = makeStyles(theme => ({
         backgroundPosition: 'center',
     },
     paper: {
-        margin: theme.spacing(8, 4),
+        margin: theme.spacing(20, 4),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -51,11 +40,12 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: '#D80319',
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: '50%', // Fix IE 11 issue.
         marginTop: theme.spacing(1),
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+        height: '40px',
     },
 }));
 
@@ -66,16 +56,18 @@ export default function Login(props) {
     const [password, setPassword] = useState("");
 
     function handleSubmit(event) {
-        console.log(email + " " + password);
         event.preventDefault();
 
         try {
-            await Auth.signIn(fields.email, fields.password);
-            props.userHasAuthenticated(true);
-          } catch (e) {
+            // await Auth.signIn(fields.email, fields.password);
+            if (email === "test" && password === "test") {
+                console.log(props.accounts);
+                props.isAuthenticated = true;
+            }
+        } catch (e) {
             alert(e.message);
-            setIsLoading(false);
-          }
+            // setIsLoading(false);
+        }
     }
 
     return (
@@ -149,5 +141,18 @@ export default function Login(props) {
                 </div>
             </Grid>
         </Grid>
+    );
+}
+
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="http://ic.ibi.ethz.ch/">
+                Your Website
+      </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
     );
 }
