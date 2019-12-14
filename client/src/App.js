@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     height: "100vh",
+    // backgroundColor: '#D80319',
   },
   menuButton: {
     marginRight: theme.spacing(5),
@@ -120,15 +121,15 @@ function App(props) {
     //   }
     // }
     setIsAuthenticating(false);
-    console.log("onLoad finished");
+    // console.log("onLoad finished");
   }
 
   async function runExample(accounts, contract) {
     console.log("runExample");
     // Stores a given value, 5 by default.
     await contract.methods.set(15).send({ from: accounts[0] });
-    console.log(accounts);
-    console.log(contract);
+    // console.log(accounts);
+    // console.log(contract);
 
     setSpecificAccount(accounts[0])
     // Get the value from the contract to prove it worked.
@@ -145,12 +146,12 @@ function App(props) {
     props.history.push("/login");
   }
 
-  function returnRouter(){
-    if(historyCount.length === 0){
+  function returnRouter() {
+    if (historyCount.length === 0) {
       props.history.push("/notFound");
     }
-    else{
-      console.log(historyCount.length)
+    else {
+      // console.log(historyCount.length)
       history.goBack();
     }
   }
@@ -176,8 +177,8 @@ function App(props) {
             <ListItemIcon>
               <LockOpenIcon style={{ fontSize: 40, color: "white" }} />
             </ListItemIcon>
-            <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }} 
-            onClick={() => { history.push('/login') }} primary="LogIn" />
+            <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }}
+              onClick={() => { history.push('/login') }} primary="Log In" />
           </ListItem>
         </List>
         <List style={{ backgroundColor: "#D80319" }}>
@@ -201,8 +202,8 @@ function App(props) {
             <ListItemIcon>
               <ExitToAppIcon style={{ fontSize: 40, color: "white" }} />
             </ListItemIcon>
-            <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }} 
-            onClick={handleLogout} primary="LogOut" />
+            <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }}
+              onClick={handleLogout} primary="Log Out" />
           </ListItem>
         </List>
         <Divider />
@@ -225,29 +226,28 @@ function App(props) {
   );
 
   return (
-    !isAuthenticating && (
-      // <div className="App container">
-      <div className={classes.root}>
-        <Drawer open={toggle.left} onClose={toggleDrawer('left', false)}>
-          {sideList('left')}
-        </Drawer>
-        <AppBar position="static" style={{ heigth: '10%' }}>
-          <Toolbar style={{ backgroundColor: '#D80319' }}>
+    // <div className="App container">
+    <div className={classes.root}>
+      <Drawer open={toggle.left} onClose={toggleDrawer('left', false)}>
+        {sideList('left')}
+      </Drawer>
+      <AppBar position="static" style={{ heigth: '10vh' }}>
+        <Toolbar style={{ backgroundColor: '#D80319' }}>
           {/* <IconButton onClick={history.goBack()} edge="start" className={classes.menuButton} color="inherit" aria-label="menu"> */}
-          <IconButton onClick={returnRouter}  edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-              <KeyboardArrowLeftIcon style={{ fontSize: 40 }} />
-            </IconButton>
-            <IconButton onClick={toggleDrawer('left', true)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-              <MenuIcon style={{ fontSize: 40 }} />
-            </IconButton>
-            <Typography variant="h3" className={classes.title}>
-              Menu
+          <IconButton onClick={returnRouter} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <KeyboardArrowLeftIcon style={{ fontSize: 40 }} />
+          </IconButton>
+          <IconButton onClick={toggleDrawer('left', true)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon style={{ fontSize: 40 }} />
+          </IconButton>
+          <Typography variant="h3" className={classes.title}>
+            Menu
           </Typography>
-            <Button style={{ fontSize: 18 }} color="inherit" onClick={() => { history.push('/login') }}>Login</Button>
-          </Toolbar>
-        </AppBar>
-        {/* <Login></Login> */}
-        {/* <Navbar fluid collapseOnSelect>
+          <Button style={{ fontSize: 18 }} color="inherit" onClick={() => { history.push('/login') }}>Login</Button>
+        </Toolbar>
+      </AppBar>
+      {/* <Login></Login> */}
+      {/* <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">Scratch</Link>
@@ -276,9 +276,11 @@ function App(props) {
             </Nav>
           </Navbar.Collapse>
         </Navbar> */}
-        <Routes appProps={{ isAuthenticated, userHasAuthenticated, storageValue, contract, accounts, specificAccount }} />
-      </div>
-    )
+      <Routes appProps={{
+        isAuthenticated, userHasAuthenticated, isAuthenticating, setIsAuthenticating,
+        storageValue, contract, accounts, specificAccount
+      }} />
+    </div>
   );
 }
 
