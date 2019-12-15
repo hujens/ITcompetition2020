@@ -3,7 +3,7 @@ pragma solidity ^0.5.0;
 import "../client/node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 //Import role contracts to use its modifiers
-import "./RoleHilti.sol";
+import "./HiltiRole.sol";
 
 //Import HiltiToken contract to use its functions
 import "./HiltiToken.sol";
@@ -148,6 +148,7 @@ contract HiltiContract is HiltiToken, HiltiRole {
                                 address _accountTool
                             )
                             public
+                            onlyHilti
                             checkUser(_accountUser)
                             requireFreeTool(_accountTool)
     {
@@ -195,11 +196,13 @@ contract HiltiContract is HiltiToken, HiltiRole {
         require(toolData[_accountTool].userAccount == msg.sender, "This tool is not registered on your account");
         //check if data needs to be uploaded
         require(toolData[_accountTool].uploadRequest == true, "This tool does not request data upload");
+        // set upload request back to false
+        toolData[_accountTool].uploadRequest = false;
         //save data to struct
         toolData[_accountTool].usageTime.push(_usageTime);
         toolData[_accountTool].timeStamps.push(block.timestamp);
         //credit Hilti Token_Amount to balance
-        userData[msg.sender].creditedAmount.add(TOKEN_AMOUNT);
+        userData[msg.sender].creditedAmount += (TOKEN_AMOUNT); //TODO: use safemath .add() somehow not working
         //emit event
         emit DataUploaded(msg.sender, _accountTool, block.timestamp, _usageTime);
     }
@@ -225,7 +228,7 @@ contract HiltiContract is HiltiToken, HiltiRole {
     /**
     * @dev transfer tokens to other address
     */
-    function transferToken (
+    function transferTokens (
                                 address _recipient,
                                 uint256 _amount
                             )
@@ -241,8 +244,6 @@ contract HiltiContract is HiltiToken, HiltiRole {
         //emit event
         emit HiltiTokenTransferred(msg.sender, _recipient, _amount);
     }
-
-
 
     /**
     * @dev redeem discount by sending tokens (burning them)
@@ -262,9 +263,9 @@ contract HiltiContract is HiltiToken, HiltiRole {
         _burn(msg.sender, _amount);
         //calculate discount to add in %
         //TODO: do not hardcode this
-        uint256 eligibleDiscount = _amount.div(100);
+        uint256 eligibleDiscount = _amount;
         //credit discount
-        userData[msg.sender].currentDiscount.add(eligibleDiscount);
+        userData[msg.sender].currentDiscount += (eligibleDiscount); //TODO: use safemath operators
         //emit event
         emit DiscountCredited(msg.sender, eligibleDiscount);
     }
