@@ -26,7 +26,7 @@ import Slide from '@material-ui/core/Slide';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        height: '90vh',
+        height: '94vh',
     },
     image: {
         backgroundImage: `url(${Background})`,
@@ -74,7 +74,8 @@ export default function Login(props) {
 
     async function onLoad() {
         if(props.isAuthenticated){
-            props.history.push("/home");
+            props.history.push("/dashboard");
+            props.setLoginOrLogout("Logout");
         }
         else{
             props.setIsAuthenticating(false);
@@ -99,7 +100,8 @@ export default function Login(props) {
             if (email === "test" && password === "test") {
                 console.log(props.accounts);
                 props.userHasAuthenticated(true)
-                props.history.push("/home");
+                props.history.push("/dashboard");
+                props.setLoginOrLogout("Logout");
             }
             else {
                 handleClickOpen()

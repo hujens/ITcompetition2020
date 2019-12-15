@@ -22,6 +22,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 
 // Icons
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import AccountBalanceWalletIcon from '@material-ui/icons/AccountBalanceWallet';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import PowerIcon from '@material-ui/icons/Power';
+
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import BuildIcon from '@material-ui/icons/Build';
@@ -50,8 +55,10 @@ const useStyles = makeStyles(theme => ({
 
 function App(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
-  const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [isAuthenticated, userHasAuthenticated] = useState(true);
   const [toggle, setToggleDrawer] = useState({ left: false });
+  const [LoginOrLogout, setLoginOrLogout] = useState("Login");
+
 
   const [storageValue, setStorageValue] = useState(0);
   const [web3, setWeb3] = useState(null);
@@ -89,6 +96,10 @@ function App(props) {
       const accounts = await web3.eth.getAccounts();
       setAccounts(accounts);
 
+      accounts.forEach(account => {
+        console.log(account);
+      });
+
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = SimpleStorageContract.networks[networkId];
@@ -96,6 +107,10 @@ function App(props) {
         SimpleStorageContract.abi,
         deployedNetwork && deployedNetwork.address,
       );
+
+      console.log("instance // contract");
+      console.log(instance._address);
+      console.log(instance);
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
@@ -107,6 +122,7 @@ function App(props) {
         `Failed to load web3, accounts, or contract. Check console for details.`,
       );
       console.error(error);
+      // "0x62ee598361d54Bc21E4C923c873866AfeDA94aF8"
     }
   }
 
@@ -142,6 +158,7 @@ function App(props) {
   async function handleLogout() {
     // await Auth.signOut();
     userHasAuthenticated(false);
+    setLoginOrLogout("Login");
     console.log(props.history)
     props.history.push("/login");
   }
@@ -160,7 +177,6 @@ function App(props) {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
     setToggleDrawer({ ...toggle, [side]: open });
   };
 
@@ -175,12 +191,42 @@ function App(props) {
         <List style={{ backgroundColor: "#D80319" }}>
           <ListItem button>
             <ListItemIcon>
-              <LockOpenIcon style={{ fontSize: 40, color: "white" }} />
+              <DashboardIcon style={{ fontSize: 40, color: "white" }} />
             </ListItemIcon>
             <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }}
-              onClick={() => { history.push('/login') }} primary="Log In" />
+              onClick={() => { history.push('/dashboard') }} primary="Dashboard" />
           </ListItem>
         </List>
+        <List style={{ backgroundColor: "#D80319" }}>
+          <ListItem button>
+            <ListItemIcon>
+              <AccountBalanceWalletIcon style={{ fontSize: 40, color: "white" }} />
+            </ListItemIcon>
+            <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }}
+              onClick={() => { history.push('/balance') }} primary="Balance" />
+          </ListItem>
+        </List>
+        <List style={{ backgroundColor: "#D80319" }}>
+          <ListItem button>
+            <ListItemIcon>
+              <ShoppingCartIcon style={{ fontSize: 40, color: "white" }} />
+            </ListItemIcon>
+            <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }}
+            onClick={() => { history.push('/orders') }} primary="Orders" />
+          </ListItem>
+        </List>
+        <List style={{ backgroundColor: "#D80319" }}>
+          <ListItem button>
+            <ListItemIcon>
+              <PowerIcon style={{ fontSize: 40, color: "white" }} />
+            </ListItemIcon>
+            <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }}
+            onClick={() => { history.push('/tools') }} primary="Tools" />
+          </ListItem>
+        </List>
+
+        <Divider disableTypography style={{ fontSize: 30, backgroundColor: "white", fontWeight: "bold" }}/>
+
         <List style={{ backgroundColor: "#D80319" }}>
           <ListItem button>
             <ListItemIcon>
@@ -197,33 +243,14 @@ function App(props) {
             <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }} primary="Send Email" />
           </ListItem>
         </List>
-        <List style={{ backgroundColor: "#D80319" }}>
-          <ListItem button>
-            <ListItemIcon>
-              <ExitToAppIcon style={{ fontSize: 40, color: "white" }} />
-            </ListItemIcon>
-            <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }}
-              onClick={handleLogout} primary="Log Out" />
-          </ListItem>
-        </List>
-        <Divider />
-        <List style={{ backgroundColor: "#D80319" }}>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ?
-                  <InboxIcon style={{ fontSize: 40, color: "white" }} />
-                  :
-                  <MailIcon style={{ fontSize: 40, color: "white" }} />}
-              </ListItemIcon>
-              <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }} primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
+        
+        <Divider disableTypography style={{ fontSize: 30, backgroundColor: "white", fontWeight: "bold" }}/>
+
       </div>
     </div>
   );
+
+
 
   return (
     // <div className="App container">
@@ -234,51 +261,27 @@ function App(props) {
       <AppBar position="static" style={{ heigth: '10vh' }}>
         <Toolbar style={{ backgroundColor: '#D80319' }}>
           {/* <IconButton onClick={history.goBack()} edge="start" className={classes.menuButton} color="inherit" aria-label="menu"> */}
-          <IconButton onClick={returnRouter} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton disabled={!isAuthenticated} onClick={returnRouter} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <KeyboardArrowLeftIcon style={{ fontSize: 40 }} />
           </IconButton>
-          <IconButton onClick={toggleDrawer('left', true)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton disabled={!isAuthenticated} onClick={toggleDrawer('left', true)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon style={{ fontSize: 40 }} />
           </IconButton>
           <Typography variant="h3" className={classes.title}>
             Menu
           </Typography>
-          <Button style={{ fontSize: 18 }} color="inherit" onClick={() => { history.push('/login') }}>Login</Button>
+          <Button style={{ fontSize: 18 }} color="inherit" onClick={() => {
+            if (isAuthenticated) {
+              handleLogout();
+            } else {
+              history.push('/login')
+            }
+          }}>{LoginOrLogout}</Button>
         </Toolbar>
       </AppBar>
-      {/* <Login></Login> */}
-      {/* <Navbar fluid collapseOnSelect>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <Link to="/">Scratch</Link>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav pullRight>
-              {isAuthenticated ? (
-                <>
-                  <LinkContainer to="/settings">
-                    <NavItem>Settings</NavItem>
-                  </LinkContainer>
-                  <NavItem onClick={handleLogout}>Logout</NavItem>
-                </>
-              ) : (
-                  <>
-                    <LinkContainer to="/signup">
-                      <NavItem>Signup</NavItem>
-                    </LinkContainer>
-                    <LinkContainer to="/login">
-                      <NavItem>Login</NavItem>
-                    </LinkContainer>
-                  </>
-                )}
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar> */}
       <Routes appProps={{
         isAuthenticated, userHasAuthenticated, isAuthenticating, setIsAuthenticating,
-        storageValue, contract, accounts, specificAccount
+        storageValue, setStorageValue, contract, accounts, specificAccount, LoginOrLogout, setLoginOrLogout
       }} />
     </div>
   );

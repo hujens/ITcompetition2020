@@ -4,7 +4,7 @@ import AppliedRoute from "./components/AppliedRoute";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
-import Home from "./containers/Home";
+import Dashboard from "./containers/dashboard/Dashboard";
 import Login from "./containers/Login";
 import StartPage from "./containers/StartPage";
 
@@ -16,7 +16,7 @@ import NotFound from "./containers/NotFound";
 
 // in appProps ist alles gespeicher => state = { storageValue: 0, web3: null, accounts: null, contract: null, isAuthenticating: true, isAuthenticated: false };
 export default function Routes({ appProps }) {
-  console.log("Routes");
+  // console.log("Routes");
   return (
     <Switch>
       {/* <div>
@@ -28,7 +28,7 @@ export default function Routes({ appProps }) {
       {/* <h1>{appProps.specificAccount}</h1> */}
       <UnauthenticatedRoute path="/" exact component={StartPage} appProps={appProps} />
       <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
-      <AuthenticatedRoute path="/home" exact component={Home} appProps={appProps} />
+      <AuthenticatedRoute path="/dashboard" exact component={Dashboard} appProps={appProps} />
 
 
 
