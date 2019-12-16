@@ -3,7 +3,7 @@ pragma solidity ^0.5.0;
 import "../client/node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 //Import role contracts to use its modifiers
-import "./RoleHilti.sol";
+import "./HiltiRole.sol";
 
 //Import HiltiToken contract to use its functions
 import "./HiltiToken.sol";
@@ -58,7 +58,7 @@ contract HiltiContract is HiltiToken, HiltiRole {
     *      The deploying account becomes contractOwner
     *      This needs to be a Hilti account!
     */
-    constructor() public onlyHilti
+    constructor() public
     {
         //The account deploying the contract becomes the first Hilti account and the Owner of this contract
         contractOwner = msg.sender;
@@ -132,6 +132,10 @@ contract HiltiContract is HiltiToken, HiltiRole {
             userAccount: address(0),
             uploadRequest: false
         });
+    }
+
+    function get() public view returns (uint) {
+        return TOKEN_AMOUNT;
     }
 
     /********************************************************************************************/

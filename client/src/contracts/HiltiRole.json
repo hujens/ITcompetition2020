@@ -1,0 +1,2298 @@
+{
+  "contractName": "HiltiRole",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "HiltiAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "HiltiRemoved",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "isHilti",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renouncHilti",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"HiltiAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"HiltiRemoved\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isHilti\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renouncHilti\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/WorkingSpace/Source/New IT Challenge/itChallenge2020/contracts/HiltiRole.sol\":\"HiltiRole\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/WorkingSpace/Source/New IT Challenge/itChallenge2020/client/node_modules/openzeppelin-solidity/contracts/access/Roles.sol\":{\"keccak256\":\"0xb002c378d7b82a101bd659c341518953ca0919d342c0a400196982c0e7e7bcdb\",\"urls\":[\"bzz-raw://00a788c4631466c220b385bdd100c571d24b2deccd657615cfbcef6cadf669a4\",\"dweb:/ipfs/QmTEwDbjJNxmMNCDMqtuou3dyM8Wtp8Q9NFvn7SAVM7Jf3\"]},\"/C/WorkingSpace/Source/New IT Challenge/itChallenge2020/contracts/HiltiRole.sol\":{\"keccak256\":\"0x0eeea39b1437245d990c1e6affa75e0c6e57f3b08dc1f18ea4da4e360d9071f9\",\"urls\":[\"bzz-raw://67c2bf094caa540e1423971beef29df977f08792208ed1d597edbff7c7544ba6\",\"dweb:/ipfs/QmQSTf5BKjv7qZNveqsCC5nBgAHhkUsCsnFMCwT4cDutHc\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506100203361002560201b60201c565b610242565b61003d81600061008360201b6102be1790919060201c565b8073ffffffffffffffffffffffffffffffffffffffff167fc846bdb9eebcaecb800772b10fc39f9f0d434e2e797a40e9f0c28819131fda3d60405160405180910390a250565b610093828261016460201b60201c565b15610106576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601f8152602001807f526f6c65733a206163636f756e7420616c72656164792068617320726f6c650081525060200191505060405180910390fd5b60018260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055505050565b60008073ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff1614156101eb576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001806106626022913960400191505060405180910390fd5b8260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16905092915050565b610411806102516000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c8063051817ca1461003b5780630661a28e14610045575b600080fd5b6100436100a1565b005b6100876004803603602081101561005b57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506100ac565b604051808215151515815260200191505060405180910390f35b6100aa336100c9565b565b60006100c282600061012390919063ffffffff16565b9050919050565b6100dd81600061020190919063ffffffff16565b8073ffffffffffffffffffffffffffffffffffffffff167f5d5dda5b73c8f1af11ce2d27f2d63ebb3cac1cf4cef2c4e339afb3d674479a7760405160405180910390a250565b60008073ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff1614156101aa576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001806103bb6022913960400191505060405180910390fd5b8260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16905092915050565b61020b8282610123565b610260576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602181526020018061039a6021913960400191505060405180910390fd5b60008260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055505050565b6102c88282610123565b1561033b576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601f8152602001807f526f6c65733a206163636f756e7420616c72656164792068617320726f6c650081525060200191505060405180910390fd5b60018260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550505056fe526f6c65733a206163636f756e7420646f6573206e6f74206861766520726f6c65526f6c65733a206163636f756e7420697320746865207a65726f2061646472657373a265627a7a72315820774a4e0013ed3fe0efb2b29cc51b1751a0e7fb7e08dc70bfb4d18fa36e5678f564736f6c634300050c0032526f6c65733a206163636f756e7420697320746865207a65726f2061646472657373",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c8063051817ca1461003b5780630661a28e14610045575b600080fd5b6100436100a1565b005b6100876004803603602081101561005b57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506100ac565b604051808215151515815260200191505060405180910390f35b6100aa336100c9565b565b60006100c282600061012390919063ffffffff16565b9050919050565b6100dd81600061020190919063ffffffff16565b8073ffffffffffffffffffffffffffffffffffffffff167f5d5dda5b73c8f1af11ce2d27f2d63ebb3cac1cf4cef2c4e339afb3d674479a7760405160405180910390a250565b60008073ffffffffffffffffffffffffffffffffffffffff168273ffffffffffffffffffffffffffffffffffffffff1614156101aa576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260228152602001806103bb6022913960400191505060405180910390fd5b8260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900460ff16905092915050565b61020b8282610123565b610260576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602181526020018061039a6021913960400191505060405180910390fd5b60008260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff0219169083151502179055505050565b6102c88282610123565b1561033b576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252601f8152602001807f526f6c65733a206163636f756e7420616c72656164792068617320726f6c650081525060200191505060405180910390fd5b60018260000160008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548160ff021916908315150217905550505056fe526f6c65733a206163636f756e7420646f6573206e6f74206861766520726f6c65526f6c65733a206163636f756e7420697320746865207a65726f2061646472657373a265627a7a72315820774a4e0013ed3fe0efb2b29cc51b1751a0e7fb7e08dc70bfb4d18fa36e5678f564736f6c634300050c0032",
+  "sourceMap": "225:1597:6:-;;;642:55;8:9:-1;5:2;;;30:1;27;20:12;5:2;642:55:6;670:21;680:10;670:9;;;:21;;:::i;:::-;225:1597;;1479:116;1531:27;1550:7;1531:14;:18;;;;;;:27;;;;:::i;:::-;1581:7;1570:19;;;;;;;;;;;;1479:116;:::o;260:175:1:-;337:18;341:4;347:7;337:3;;;:18;;:::i;:::-;336:19;328:63;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;424:4;401;:11;;:20;413:7;401:20;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;260:175;;:::o;779:200::-;851:4;894:1;875:21;;:7;:21;;;;867:68;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;952:4;:11;;:20;964:7;952:20;;;;;;;;;;;;;;;;;;;;;;;;;945:27;;779:200;;;;:::o;225:1597:6:-;;;;;;;",
+  "deployedSourceMap": "225:1597:6:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;225:1597:6;;;;;;;;;;;;;;;;;;;;;;;;1320:68;;;:::i;:::-;;949:108;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;949:108:6;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1320:68;1358:24;1371:10;1358:12;:24::i;:::-;1320:68::o;949:108::-;1004:4;1024:27;1043:7;1024:14;:18;;:27;;;;:::i;:::-;1017:34;;949:108;;;:::o;1695:124::-;1750:30;1772:7;1750:14;:21;;:30;;;;:::i;:::-;1805:7;1792:21;;;;;;;;;;;;1695:124;:::o;779:200:1:-;851:4;894:1;875:21;;:7;:21;;;;867:68;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;952:4;:11;;:20;964:7;952:20;;;;;;;;;;;;;;;;;;;;;;;;;945:27;;779:200;;;;:::o;510:180::-;589:18;593:4;599:7;589:3;:18::i;:::-;581:64;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;678:5;655:4;:11;;:20;667:7;655:20;;;;;;;;;;;;;;;;:28;;;;;;;;;;;;;;;;;;510:180;;:::o;260:175::-;337:18;341:4;347:7;337:3;:18::i;:::-;336:19;328:63;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;424:4;401;:11;;:20;413:7;401:20;;;;;;;;;;;;;;;;:27;;;;;;;;;;;;;;;;;;260:175;;:::o",
+  "source": "pragma solidity ^0.5.0;\r\n\r\n// Import 'Roles' from OpenZeppelin:\r\nimport \"../client/node_modules/openzeppelin-solidity/contracts/access/Roles.sol\";\r\n\r\n// Define a contract 'HiltiRole' to manage this role - add, remove, check\r\ncontract HiltiRole {\r\n  using Roles for Roles.Role;\r\n\r\n  // Events, one for Adding, and other for Removing\r\n  event HiltiAdded(address indexed account);\r\n  event HiltiRemoved(address indexed account);\r\n\r\n  // Defining a struct 'hilti' by inheriting from 'Roles' library, struct Role\r\n  Roles.Role private hilti_accounts;\r\n\r\n  // In the constructor make the address that deploys this contract the 1st Hilti Account\r\n  constructor() public {\r\n    _addHilti(msg.sender);\r\n  }\r\n\r\n  // Defining a modifier that checks to see if msg.sender has the appropriate role\r\n  modifier onlyHilti() {\r\n    require(isHilti(msg.sender), \"sender is not a Hilti account\");\r\n    _;\r\n  }\r\n\r\n  // Define a function 'isHilti' to check this role\r\n  function isHilti(address account) public view returns (bool) {\r\n    return hilti_accounts.has(account);\r\n  }\r\n\r\n  // Define a function 'addHilti' that adds this role --> in HiltiContract because it need onlyHilti modifier!\r\n  /*function addHilti(address account) public {\r\n    _addHilti(account);\r\n  }*/\r\n\r\n  // Define a function 'renounceHilti' to renounce this role\r\n  function renouncHilti() public {\r\n    _removeHilti(msg.sender);\r\n  }\r\n\r\n  // Define an internal function '_addHilti' to add this role, called by 'addHilti'\r\n  function _addHilti(address account) internal {\r\n    hilti_accounts.add(account);\r\n    emit HiltiAdded(account);\r\n  }\r\n\r\n  // Define an internal function '_removeHilti' to remove this role, called by 'removeHilti'\r\n  function _removeHilti(address account) internal {\r\n    hilti_accounts.remove(account);\r\n    emit HiltiRemoved(account);\r\n  }\r\n}",
+  "sourcePath": "C:\\WorkingSpace\\Source\\New IT Challenge\\itChallenge2020\\contracts\\HiltiRole.sol",
+  "ast": {
+    "absolutePath": "/C/WorkingSpace/Source/New IT Challenge/itChallenge2020/contracts/HiltiRole.sol",
+    "exportedSymbols": {
+      "HiltiRole": [
+        1450
+      ]
+    },
+    "id": 1451,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1360,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:6"
+      },
+      {
+        "absolutePath": "/C/WorkingSpace/Source/New IT Challenge/itChallenge2020/client/node_modules/openzeppelin-solidity/contracts/access/Roles.sol",
+        "file": "../client/node_modules/openzeppelin-solidity/contracts/access/Roles.sol",
+        "id": 1361,
+        "nodeType": "ImportDirective",
+        "scope": 1451,
+        "sourceUnit": 108,
+        "src": "65:81:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1450,
+        "linearizedBaseContracts": [
+          1450
+        ],
+        "name": "HiltiRole",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 1364,
+            "libraryName": {
+              "contractScope": null,
+              "id": 1362,
+              "name": "Roles",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 107,
+              "src": "255:5:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Roles_$107",
+                "typeString": "library Roles"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "249:27:6",
+            "typeName": {
+              "contractScope": null,
+              "id": 1363,
+              "name": "Roles.Role",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 33,
+              "src": "265:10:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Role_$33_storage_ptr",
+                "typeString": "struct Roles.Role"
+              }
+            }
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 1368,
+            "name": "HiltiAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1367,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1366,
+                  "indexed": true,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1368,
+                  "src": "352:23:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1365,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "352:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "351:25:6"
+            },
+            "src": "335:42:6"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 1372,
+            "name": "HiltiRemoved",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1371,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1370,
+                  "indexed": true,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1372,
+                  "src": "400:23:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1369,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "400:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "399:25:6"
+            },
+            "src": "381:44:6"
+          },
+          {
+            "constant": false,
+            "id": 1374,
+            "name": "hilti_accounts",
+            "nodeType": "VariableDeclaration",
+            "scope": 1450,
+            "src": "511:33:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_Role_$33_storage",
+              "typeString": "struct Roles.Role"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1373,
+              "name": "Roles.Role",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 33,
+              "src": "511:10:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Role_$33_storage_ptr",
+                "typeString": "struct Roles.Role"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 1382,
+              "nodeType": "Block",
+              "src": "663:34:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1378,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1573,
+                          "src": "680:3:6",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 1379,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "680:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 1377,
+                      "name": "_addHilti",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1433,
+                      "src": "670:9:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 1380,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "670:21:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1381,
+                  "nodeType": "ExpressionStatement",
+                  "src": "670:21:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1383,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1375,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "653:2:6"
+            },
+            "returnParameters": {
+              "id": 1376,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "663:0:6"
+            },
+            "scope": 1450,
+            "src": "642:55:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1394,
+              "nodeType": "Block",
+              "src": "808:82:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1387,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1573,
+                              "src": "831:3:6",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 1388,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "831:10:6",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          ],
+                          "id": 1386,
+                          "name": "isHilti",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1408,
+                          "src": "823:7:6",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
+                            "typeString": "function (address) view returns (bool)"
+                          }
+                        },
+                        "id": 1389,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "823:19:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "73656e646572206973206e6f7420612048696c7469206163636f756e74",
+                        "id": 1390,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "844:31:6",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_bdc63bbb4c26d5a8fa29219a7bdb6538cf2db36154ebeef661f9b618699accd2",
+                          "typeString": "literal_string \"sender is not a Hilti account\""
+                        },
+                        "value": "sender is not a Hilti account"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_bdc63bbb4c26d5a8fa29219a7bdb6538cf2db36154ebeef661f9b618699accd2",
+                          "typeString": "literal_string \"sender is not a Hilti account\""
+                        }
+                      ],
+                      "id": 1385,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        1576,
+                        1577
+                      ],
+                      "referencedDeclaration": 1577,
+                      "src": "815:7:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1391,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "815:61:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1392,
+                  "nodeType": "ExpressionStatement",
+                  "src": "815:61:6"
+                },
+                {
+                  "id": 1393,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "883:1:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1395,
+            "name": "onlyHilti",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 1384,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "805:2:6"
+            },
+            "src": "787:103:6",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1407,
+              "nodeType": "Block",
+              "src": "1010:47:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1404,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1397,
+                        "src": "1043:7:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1402,
+                        "name": "hilti_accounts",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1374,
+                        "src": "1024:14:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Role_$33_storage",
+                          "typeString": "struct Roles.Role storage ref"
+                        }
+                      },
+                      "id": 1403,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "has",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 106,
+                      "src": "1024:18:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_Role_$33_storage_ptr_$_t_address_$returns$_t_bool_$bound_to$_t_struct$_Role_$33_storage_ptr_$",
+                        "typeString": "function (struct Roles.Role storage pointer,address) view returns (bool)"
+                      }
+                    },
+                    "id": 1405,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1024:27:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1401,
+                  "id": 1406,
+                  "nodeType": "Return",
+                  "src": "1017:34:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1408,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isHilti",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1398,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1397,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1408,
+                  "src": "966:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1396,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "966:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "965:17:6"
+            },
+            "returnParameters": {
+              "id": 1401,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1400,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1408,
+                  "src": "1004:4:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1399,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1004:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1003:6:6"
+            },
+            "scope": 1450,
+            "src": "949:108:6",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1416,
+              "nodeType": "Block",
+              "src": "1351:37:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1412,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1573,
+                          "src": "1371:3:6",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 1413,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1371:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 1411,
+                      "name": "_removeHilti",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1449,
+                      "src": "1358:12:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 1414,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1358:24:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1415,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1358:24:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1417,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "renouncHilti",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1409,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1341:2:6"
+            },
+            "returnParameters": {
+              "id": 1410,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1351:0:6"
+            },
+            "scope": 1450,
+            "src": "1320:68:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1432,
+              "nodeType": "Block",
+              "src": "1524:71:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1425,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1419,
+                        "src": "1550:7:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1422,
+                        "name": "hilti_accounts",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1374,
+                        "src": "1531:14:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Role_$33_storage",
+                          "typeString": "struct Roles.Role storage ref"
+                        }
+                      },
+                      "id": 1424,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "add",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 58,
+                      "src": "1531:18:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Role_$33_storage_ptr_$_t_address_$returns$__$bound_to$_t_struct$_Role_$33_storage_ptr_$",
+                        "typeString": "function (struct Roles.Role storage pointer,address)"
+                      }
+                    },
+                    "id": 1426,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1531:27:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1427,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1531:27:6"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1429,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1419,
+                        "src": "1581:7:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 1428,
+                      "name": "HiltiAdded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1368,
+                      "src": "1570:10:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 1430,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1570:19:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1431,
+                  "nodeType": "EmitStatement",
+                  "src": "1565:24:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1433,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_addHilti",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1420,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1419,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1433,
+                  "src": "1498:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1418,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1498:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1497:17:6"
+            },
+            "returnParameters": {
+              "id": 1421,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1524:0:6"
+            },
+            "scope": 1450,
+            "src": "1479:116:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1448,
+              "nodeType": "Block",
+              "src": "1743:76:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1441,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1435,
+                        "src": "1772:7:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1438,
+                        "name": "hilti_accounts",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1374,
+                        "src": "1750:14:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Role_$33_storage",
+                          "typeString": "struct Roles.Role storage ref"
+                        }
+                      },
+                      "id": 1440,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "remove",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 82,
+                      "src": "1750:21:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Role_$33_storage_ptr_$_t_address_$returns$__$bound_to$_t_struct$_Role_$33_storage_ptr_$",
+                        "typeString": "function (struct Roles.Role storage pointer,address)"
+                      }
+                    },
+                    "id": 1442,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1750:30:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1443,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1750:30:6"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1445,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1435,
+                        "src": "1805:7:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 1444,
+                      "name": "HiltiRemoved",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1372,
+                      "src": "1792:12:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 1446,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1792:21:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1447,
+                  "nodeType": "EmitStatement",
+                  "src": "1787:26:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1449,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_removeHilti",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1436,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1435,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1449,
+                  "src": "1717:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1434,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1717:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1716:17:6"
+            },
+            "returnParameters": {
+              "id": 1437,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1743:0:6"
+            },
+            "scope": 1450,
+            "src": "1695:124:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1451,
+        "src": "225:1597:6"
+      }
+    ],
+    "src": "0:1822:6"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/WorkingSpace/Source/New IT Challenge/itChallenge2020/contracts/HiltiRole.sol",
+    "exportedSymbols": {
+      "HiltiRole": [
+        1450
+      ]
+    },
+    "id": 1451,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1360,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:6"
+      },
+      {
+        "absolutePath": "/C/WorkingSpace/Source/New IT Challenge/itChallenge2020/client/node_modules/openzeppelin-solidity/contracts/access/Roles.sol",
+        "file": "../client/node_modules/openzeppelin-solidity/contracts/access/Roles.sol",
+        "id": 1361,
+        "nodeType": "ImportDirective",
+        "scope": 1451,
+        "sourceUnit": 108,
+        "src": "65:81:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1450,
+        "linearizedBaseContracts": [
+          1450
+        ],
+        "name": "HiltiRole",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 1364,
+            "libraryName": {
+              "contractScope": null,
+              "id": 1362,
+              "name": "Roles",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 107,
+              "src": "255:5:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Roles_$107",
+                "typeString": "library Roles"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "249:27:6",
+            "typeName": {
+              "contractScope": null,
+              "id": 1363,
+              "name": "Roles.Role",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 33,
+              "src": "265:10:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Role_$33_storage_ptr",
+                "typeString": "struct Roles.Role"
+              }
+            }
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 1368,
+            "name": "HiltiAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1367,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1366,
+                  "indexed": true,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1368,
+                  "src": "352:23:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1365,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "352:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "351:25:6"
+            },
+            "src": "335:42:6"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 1372,
+            "name": "HiltiRemoved",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 1371,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1370,
+                  "indexed": true,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1372,
+                  "src": "400:23:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1369,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "400:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "399:25:6"
+            },
+            "src": "381:44:6"
+          },
+          {
+            "constant": false,
+            "id": 1374,
+            "name": "hilti_accounts",
+            "nodeType": "VariableDeclaration",
+            "scope": 1450,
+            "src": "511:33:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_struct$_Role_$33_storage",
+              "typeString": "struct Roles.Role"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 1373,
+              "name": "Roles.Role",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 33,
+              "src": "511:10:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_struct$_Role_$33_storage_ptr",
+                "typeString": "struct Roles.Role"
+              }
+            },
+            "value": null,
+            "visibility": "private"
+          },
+          {
+            "body": {
+              "id": 1382,
+              "nodeType": "Block",
+              "src": "663:34:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1378,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1573,
+                          "src": "680:3:6",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 1379,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "680:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 1377,
+                      "name": "_addHilti",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1433,
+                      "src": "670:9:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 1380,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "670:21:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1381,
+                  "nodeType": "ExpressionStatement",
+                  "src": "670:21:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1383,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1375,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "653:2:6"
+            },
+            "returnParameters": {
+              "id": 1376,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "663:0:6"
+            },
+            "scope": 1450,
+            "src": "642:55:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1394,
+              "nodeType": "Block",
+              "src": "808:82:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 1387,
+                              "name": "msg",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 1573,
+                              "src": "831:3:6",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_message",
+                                "typeString": "msg"
+                              }
+                            },
+                            "id": 1388,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "sender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "831:10:6",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          ],
+                          "id": 1386,
+                          "name": "isHilti",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1408,
+                          "src": "823:7:6",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
+                            "typeString": "function (address) view returns (bool)"
+                          }
+                        },
+                        "id": 1389,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "823:19:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "73656e646572206973206e6f7420612048696c7469206163636f756e74",
+                        "id": 1390,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "844:31:6",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_bdc63bbb4c26d5a8fa29219a7bdb6538cf2db36154ebeef661f9b618699accd2",
+                          "typeString": "literal_string \"sender is not a Hilti account\""
+                        },
+                        "value": "sender is not a Hilti account"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_bdc63bbb4c26d5a8fa29219a7bdb6538cf2db36154ebeef661f9b618699accd2",
+                          "typeString": "literal_string \"sender is not a Hilti account\""
+                        }
+                      ],
+                      "id": 1385,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        1576,
+                        1577
+                      ],
+                      "referencedDeclaration": 1577,
+                      "src": "815:7:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 1391,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "815:61:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1392,
+                  "nodeType": "ExpressionStatement",
+                  "src": "815:61:6"
+                },
+                {
+                  "id": 1393,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "883:1:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1395,
+            "name": "onlyHilti",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 1384,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "805:2:6"
+            },
+            "src": "787:103:6",
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1407,
+              "nodeType": "Block",
+              "src": "1010:47:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1404,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1397,
+                        "src": "1043:7:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1402,
+                        "name": "hilti_accounts",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1374,
+                        "src": "1024:14:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Role_$33_storage",
+                          "typeString": "struct Roles.Role storage ref"
+                        }
+                      },
+                      "id": 1403,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "has",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 106,
+                      "src": "1024:18:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$_t_struct$_Role_$33_storage_ptr_$_t_address_$returns$_t_bool_$bound_to$_t_struct$_Role_$33_storage_ptr_$",
+                        "typeString": "function (struct Roles.Role storage pointer,address) view returns (bool)"
+                      }
+                    },
+                    "id": 1405,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1024:27:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 1401,
+                  "id": 1406,
+                  "nodeType": "Return",
+                  "src": "1017:34:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1408,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isHilti",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1398,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1397,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1408,
+                  "src": "966:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1396,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "966:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "965:17:6"
+            },
+            "returnParameters": {
+              "id": 1401,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1400,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1408,
+                  "src": "1004:4:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1399,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1004:4:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1003:6:6"
+            },
+            "scope": 1450,
+            "src": "949:108:6",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1416,
+              "nodeType": "Block",
+              "src": "1351:37:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 1412,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 1573,
+                          "src": "1371:3:6",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 1413,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1371:10:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 1411,
+                      "name": "_removeHilti",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1449,
+                      "src": "1358:12:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 1414,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1358:24:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1415,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1358:24:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1417,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "renouncHilti",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1409,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1341:2:6"
+            },
+            "returnParameters": {
+              "id": 1410,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1351:0:6"
+            },
+            "scope": 1450,
+            "src": "1320:68:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 1432,
+              "nodeType": "Block",
+              "src": "1524:71:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1425,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1419,
+                        "src": "1550:7:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1422,
+                        "name": "hilti_accounts",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1374,
+                        "src": "1531:14:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Role_$33_storage",
+                          "typeString": "struct Roles.Role storage ref"
+                        }
+                      },
+                      "id": 1424,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "add",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 58,
+                      "src": "1531:18:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Role_$33_storage_ptr_$_t_address_$returns$__$bound_to$_t_struct$_Role_$33_storage_ptr_$",
+                        "typeString": "function (struct Roles.Role storage pointer,address)"
+                      }
+                    },
+                    "id": 1426,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1531:27:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1427,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1531:27:6"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1429,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1419,
+                        "src": "1581:7:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 1428,
+                      "name": "HiltiAdded",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1368,
+                      "src": "1570:10:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 1430,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1570:19:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1431,
+                  "nodeType": "EmitStatement",
+                  "src": "1565:24:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1433,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_addHilti",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1420,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1419,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1433,
+                  "src": "1498:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1418,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1498:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1497:17:6"
+            },
+            "returnParameters": {
+              "id": 1421,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1524:0:6"
+            },
+            "scope": 1450,
+            "src": "1479:116:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 1448,
+              "nodeType": "Block",
+              "src": "1743:76:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1441,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1435,
+                        "src": "1772:7:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 1438,
+                        "name": "hilti_accounts",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1374,
+                        "src": "1750:14:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Role_$33_storage",
+                          "typeString": "struct Roles.Role storage ref"
+                        }
+                      },
+                      "id": 1440,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "remove",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 82,
+                      "src": "1750:21:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_struct$_Role_$33_storage_ptr_$_t_address_$returns$__$bound_to$_t_struct$_Role_$33_storage_ptr_$",
+                        "typeString": "function (struct Roles.Role storage pointer,address)"
+                      }
+                    },
+                    "id": 1442,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1750:30:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1443,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1750:30:6"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 1445,
+                        "name": "account",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 1435,
+                        "src": "1805:7:6",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 1444,
+                      "name": "HiltiRemoved",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 1372,
+                      "src": "1792:12:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 1446,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1792:21:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1447,
+                  "nodeType": "EmitStatement",
+                  "src": "1787:26:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1449,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_removeHilti",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1436,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1435,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1449,
+                  "src": "1717:15:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1434,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1717:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1716:17:6"
+            },
+            "returnParameters": {
+              "id": 1437,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1743:0:6"
+            },
+            "scope": 1450,
+            "src": "1695:124:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1451,
+        "src": "225:1597:6"
+      }
+    ],
+    "src": "0:1822:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.12+commit.7709ece9.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {
+        "0xc846bdb9eebcaecb800772b10fc39f9f0d434e2e797a40e9f0c28819131fda3d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "HiltiAdded",
+          "type": "event",
+          "signature": "0xc846bdb9eebcaecb800772b10fc39f9f0d434e2e797a40e9f0c28819131fda3d"
+        },
+        "0x5d5dda5b73c8f1af11ce2d27f2d63ebb3cac1cf4cef2c4e339afb3d674479a77": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "HiltiRemoved",
+          "type": "event",
+          "signature": "0x5d5dda5b73c8f1af11ce2d27f2d63ebb3cac1cf4cef2c4e339afb3d674479a77"
+        }
+      },
+      "links": {},
+      "address": "0xa53Df5D39Df0Dd89c754C1d7016CEF707aF2dFD8",
+      "transactionHash": "0xfbe23ef3730f00ac1929258bfef92916fd7e7cc1d3369118f6f41027f7226b3d"
+    }
+  },
+  "schemaVersion": "3.0.19",
+  "updatedAt": "2019-12-15T15:43:35.057Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

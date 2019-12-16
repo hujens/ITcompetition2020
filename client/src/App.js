@@ -10,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Routes from "./Routes";
 import "./App.css";
-import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
 
 import Drawer from '@material-ui/core/Drawer';
@@ -34,6 +33,12 @@ import MailIcon from '@material-ui/icons/Mail';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import Login from "./containers/Login";
+
+// Contracts
+
+// import SimpleStorageContract from "./contracts/SimpleStorage.json";
+import HiltiContract from "./contracts/HiltiContract.json";
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -64,6 +69,8 @@ function App(props) {
   const [web3, setWeb3] = useState(null);
   const [accounts, setAccounts] = useState(null);
   const [contract, setContract] = useState(null);
+  const [hiltiContract, sethiltiContract] = useState(null);
+
   const [specificAccount, setSpecificAccount] = useState("test");
 
   const [historyCount, setHistoryCount] = useState(0);
@@ -102,19 +109,36 @@ function App(props) {
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
-      const deployedNetwork = SimpleStorageContract.networks[networkId];
-      const instance = new web3.eth.Contract(
-        SimpleStorageContract.abi,
-        deployedNetwork && deployedNetwork.address,
+      console.log("networkId");
+      console.log(networkId);
+
+      // const deployedNetwork = SimpleStorageContract.networks[networkId];
+      // console.log("deployedNetwork");
+      // console.log(deployedNetwork);
+
+      // const instance = new web3.eth.Contract(
+      //   SimpleStorageContract.abi,
+      //   deployedNetwork && deployedNetwork.address,
+      // );
+
+      const deployedNetworkHilti = HiltiContract.networks[networkId];
+      console.log("deployedNetworkHilti");
+      console.log(deployedNetworkHilti);
+
+      const hiltiContract = new web3.eth.Contract(
+        HiltiContract.abi,
+        deployedNetworkHilti && deployedNetworkHilti.address,
       );
 
-      console.log("instance // contract");
-      console.log(instance._address);
-      console.log(instance);
+      // console.log("instance // contract");
+      // console.log(instance._address);
+      // console.log(instance);
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      setContract(instance, await runExample(accounts, instance));
+      // setContract(instance, await runExample(accounts, instance));
+
+      sethiltiContract(hiltiContract, await runExampleHilti(accounts, hiltiContract));
       // }, 3000);
     } catch (error) {
       // Catch any errors for any of the above operations.
@@ -143,7 +167,7 @@ function App(props) {
   async function runExample(accounts, contract) {
     console.log("runExample");
     // Stores a given value, 5 by default.
-    await contract.methods.set(15).send({ from: accounts[0] });
+    // await contract.methods.set(15).send({ from: accounts[0] });
     // console.log(accounts);
     // console.log(contract);
 
@@ -153,6 +177,37 @@ function App(props) {
 
     // Update state with the result.
     setStorageValue(response);
+  };
+
+  async function runExampleHilti(accounts, contract) {
+    console.log("runExampleHilti");
+    console.log(contract);
+    // Stores a given value, 5 by default.
+    // const response = await contract.methods.get().call();
+    // const response = await contract.methods.addUser(accounts[1]).send({ from: accounts[0] }).then(async (res) => {
+    //   console.log("1");
+    //   console.log(res);
+    //   await contract.methods.addTool(accounts[5]).send({ from: accounts[0] }).then(async (res2) => {
+    //     console.log("2");
+    //     console.log(res2);
+    //     await contract.methods.registerTool(accounts[1], accounts[5]).send({ from: accounts[0] }).then(async (res3) => {
+    //       console.log("3");
+    //       console.log(res3);
+          const response = await contract.methods.fetchUserData(accounts[1]).call();
+      //   });
+      // });
+      console.log();
+    // });
+    // console.log(accounts);
+    // console.log(contract);
+
+    // setSpecificAccount(accounts[0])
+    // Get the value from the contract to prove it worked.
+    // const response = await contract.methods.get().call();
+
+    // Update state with the result.
+    setStorageValue(response[0]);
+
   };
 
   async function handleLogout() {
@@ -212,7 +267,7 @@ function App(props) {
               <ShoppingCartIcon style={{ fontSize: 40, color: "white" }} />
             </ListItemIcon>
             <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }}
-            onClick={() => { history.push('/orders') }} primary="Orders" />
+              onClick={() => { history.push('/orders') }} primary="Orders" />
           </ListItem>
         </List>
         <List style={{ backgroundColor: "#D80319" }}>
@@ -221,11 +276,11 @@ function App(props) {
               <PowerIcon style={{ fontSize: 40, color: "white" }} />
             </ListItemIcon>
             <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }}
-            onClick={() => { history.push('/tools') }} primary="Tools" />
+              onClick={() => { history.push('/tools') }} primary="Tools" />
           </ListItem>
         </List>
 
-        <Divider disableTypography style={{ fontSize: 30, backgroundColor: "white", fontWeight: "bold" }}/>
+        <Divider disableTypography style={{ fontSize: 30, backgroundColor: "white", fontWeight: "bold" }} />
 
         <List style={{ backgroundColor: "#D80319" }}>
           <ListItem button>
@@ -243,8 +298,8 @@ function App(props) {
             <ListItemText disableTypography style={{ fontSize: 30, color: "white", fontWeight: "bold" }} primary="Send Email" />
           </ListItem>
         </List>
-        
-        <Divider disableTypography style={{ fontSize: 30, backgroundColor: "white", fontWeight: "bold" }}/>
+
+        <Divider disableTypography style={{ fontSize: 30, backgroundColor: "white", fontWeight: "bold" }} />
 
       </div>
     </div>
@@ -255,6 +310,7 @@ function App(props) {
   return (
     // <div className="App container">
     <div className={classes.root}>
+      <h1>{storageValue}</h1>
       <Drawer open={toggle.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
       </Drawer>

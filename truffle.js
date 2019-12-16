@@ -10,7 +10,8 @@ module.exports = {
     development: {
       host: "127.0.0.1",
       port: 7545, //Port 8545 for canache-cli, Port 7545 for Ganache-GUI
-      network_id: "*" // Match any network id
+      network_id: "*", // Match any network id
+      gas: 2000000,
     }/*,
     rinkeby: {
       provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`),
