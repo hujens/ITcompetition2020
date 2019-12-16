@@ -24,15 +24,17 @@ contract HiltiContract is HiltiToken, HiltiRole {
         address[] toolList;         //List of registered Tools for this users
         uint256 creditedAmount;     //HiltiToken Balance
         uint256 currentDiscount;    //HiltiDiscount
+        string name;
     }
 
     struct ToolData {
         address toolAccount;
         uint256[] usageTime;        //List of usageTime
-        uint256[] timeStamps;        //List of Timestamps
-        bool isAssigned;          //To check whether tool is already assigned to a user
+        uint256[] timeStamps;       //List of Timestamps
+        bool isAssigned;            //To check whether tool is already assigned to a user
         address userAccount;        //Assigned User
         bool uploadRequest;         //To check whether data can be uploaded
+        string name;
     }
 
     mapping(address => UserData) userData;  // Mapping to store user related information
@@ -103,7 +105,7 @@ contract HiltiContract is HiltiToken, HiltiRole {
     /**
     * @dev Add User - Only allowed by Hilti account
     */
-    function addUser(address _account) public onlyHilti {
+    function addUser(address _account, string memory _name) public onlyHilti {
         //check that not a hilit/tool addresse
         //check that not already registered as user
 
@@ -112,14 +114,15 @@ contract HiltiContract is HiltiToken, HiltiRole {
             userAccount: _account,
             toolList: new address[](0),
             creditedAmount: 0,
-            currentDiscount: 0
+            currentDiscount: 0,
+            name: _name
         });
     }
 
     /**
     * @dev Add Tool - Only allowed by Hilti account
     */
-    function addTool(address _account) public onlyHilti {
+    function addTool(address _account, string memory _name) public onlyHilti {
         //check that not a hilti/user address
         //check that not already registered as tool
 
@@ -130,7 +133,8 @@ contract HiltiContract is HiltiToken, HiltiRole {
             timeStamps: new uint256[](0),
             isAssigned: false,
             userAccount: address(0),
-            uploadRequest: false
+            uploadRequest: false,
+            name: _name
         });
     }
 
@@ -288,14 +292,16 @@ contract HiltiContract is HiltiToken, HiltiRole {
                                     address,
                                     address[] memory,
                                     uint256,
-                                    uint256
+                                    uint256,
+                                    string memory
                                 )
     {
         return(
             userData[_account].userAccount,
             userData[_account].toolList,
             userData[_account].creditedAmount,
-            userData[_account].currentDiscount
+            userData[_account].currentDiscount,
+            userData[_account].name
         );
     }
 
@@ -315,7 +321,8 @@ contract HiltiContract is HiltiToken, HiltiRole {
                                     uint256[] memory,
                                     bool,
                                     address,
-                                    bool
+                                    bool,
+                                    string memory
                                 )
     {
         return(
@@ -324,7 +331,8 @@ contract HiltiContract is HiltiToken, HiltiRole {
             toolData[_account].timeStamps,
             toolData[_account].isAssigned,
             toolData[_account].userAccount,
-            toolData[_account].uploadRequest
+            toolData[_account].uploadRequest,
+            toolData[_account].name
         );
     }
 

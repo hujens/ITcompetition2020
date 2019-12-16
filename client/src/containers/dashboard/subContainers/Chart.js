@@ -20,12 +20,34 @@ const data = [
   createData('24:00', undefined),
 ];
 
-export default function Chart() {
+export default function Chart(props) {
   const theme = useTheme();
+
+  let data = [];
+
+  props.appProps.xAxes.forEach((element, index) => {
+    var formattedTime = timeConverter(element)
+    let dateRes = createData(formattedTime, props.appProps.yAxes[index]);
+    data.push(dateRes);
+  });
+
+  function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+    return time;
+  }
 
   return (
     <React.Fragment>
-      <Title>Today</Title>
+      {/* <Title>Today</Title> */}
+      <Title>{props.appProps.currentAccount}</Title>
       <ResponsiveContainer>
         <LineChart
           data={data}
@@ -43,7 +65,7 @@ export default function Chart() {
               position="left"
               style={{ textAnchor: 'middle', fill: theme.palette.text.primary }}
             >
-              Sales ($)
+              Value
             </Label>
           </YAxis>
           <Line type="monotone" dataKey="amount" stroke={theme.palette.primary.main} dot={false} />

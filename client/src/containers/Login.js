@@ -56,9 +56,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//     return <Slide direction="up" ref={ref} {...props} />;
+// });
 
 export default function Login(props) {
     const classes = useStyles();
@@ -73,12 +73,13 @@ export default function Login(props) {
     }, []);
 
     async function onLoad() {
-        if(props.isAuthenticated){
+        if (props.isAuthenticated) {
             props.history.push("/dashboard");
             props.setLoginOrLogout("Logout");
-        }
-        else{
             props.setIsAuthenticating(false);
+        }
+        else {
+            props.setIsAuthenticating(true);
         }
         // try {
         //   // await Auth.currentSession();
@@ -92,16 +93,66 @@ export default function Login(props) {
         // console.log("onLoad finished");
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
-
         try {
             // await Auth.signIn(fields.email, fields.password);
-            if (email === "test" && password === "test") {
-                console.log(props.accounts);
+            if (email === "test@test.com" && password === "test") {
                 props.userHasAuthenticated(true)
                 props.history.push("/dashboard");
                 props.setLoginOrLogout("Logout");
+                props.setcurrentAccount(props.accounts[1]);
+                await props.hiltiContract.methods.fetchUserData(props.accounts[1]).call().then(async (res) => {
+                    console.log(res);
+                    if (res[0] === "0x0000000000000000000000000000000000000000") {
+                        alert(
+                            `User not exist on the Blockchain => Creating a new one`,
+                        );
+                        try {
+                            console.log(props.accounts[1]);
+                            await props.hiltiContract.methods.addUser(props.accounts[1], "Bob").send({ from: props.accounts[0] }).then(async () => {
+                                console.log("addUser");
+                                await props.hiltiContract.methods.addTool(props.accounts[3], "Hilti Saebelsaegen - WSR 22-A").send({ from: props.accounts[0], gas: 1000000 }).then(async (res) => {
+                                    console.log("addTool");
+                                    console.log(res);
+                                    await props.hiltiContract.methods.registerTool(props.accounts[1], props.accounts[3])
+                                        .send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
+                                            console.log("registerTool");
+                                            await props.hiltiContract.methods.requestUpload(props.accounts[3]).send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
+                                                console.log("requestUpload");
+                                                // als erstes Tool Daten holen
+                                                await props.hiltiContract.methods.fetchToolData(props.accounts[3]).call().then(res => {
+                                                    console.log(res);
+                                                    props.setxAxes(res[2]);
+                                                    props.setyAxes(res[1]);
+                                                    blockchainListener();
+                                                });
+                                            });
+                                        });
+                                });
+                            });
+                        } catch (e) {
+                            alert(e.message);
+                            console.log(e);
+                        }
+                    }
+                    else {
+                        props.setCreditedAmount(res[2]);
+                        props.setCurrentDiscount(res[3]);
+                        await props.hiltiContract.methods.balanceOf(props.accounts[1]).call().then(async (res) => {
+                            props.setHiltiTokenStorage(res);
+                            await props.hiltiContract.methods.fetchToolData(props.accounts[3]).call().then(res => {
+                                console.log(res);
+                                props.setxAxes(res[2]);
+                                props.setyAxes(res[1]);
+                                blockchainListener();
+                            });
+                        })
+                    }
+                });
+            }
+            else if (email === "test@test.com" && password === "test") {
+                // To do for other user account
             }
             else {
                 handleClickOpen()
@@ -120,11 +171,33 @@ export default function Login(props) {
         setOpen(false);
     };
 
+    function blockchainListener() {
+        // Event Listener out of the Blockchain
+        props.hiltiContract.getPastEvents("allEvents",
+            {
+                fromBlock: 'latest',
+                toBlock: 'latest' // You can also specify 'latest'          
+            })
+            .then((events) => {
+                console.log("blockchainListener")
+                var tempData = props.events
+                const data = createData(events[0].id, events[0].type, events[0].event, events[0].blockNumber, events[0].blockHash);
+                tempData.push(data);
+                props.setEvents(tempData);
+                console.log(props.events)
+            }
+            );
+    }
+
+    function createData(id, type, event, blockNumber, blockHash) {
+        return { id, type, event, blockNumber, blockHash };
+    }
+
     return (
         <div>
             <Dialog
                 open={open}
-                TransitionComponent={Transition}
+                // TransitionComponent={Transition}
                 keepMounted
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-slide-title"

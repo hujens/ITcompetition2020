@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 
 export default function Title(props) {
+  const gutter = true
   return (
-    <Typography component="h2" variant="h4" gutterBottom="true">
+    <Typography component="h2" variant="h4" gutterBottom={gutter}>
       {props.children}
     </Typography>
   );

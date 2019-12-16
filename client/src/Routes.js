@@ -16,7 +16,7 @@ import NotFound from "./containers/NotFound";
 
 // in appProps ist alles gespeicher => state = { storageValue: 0, web3: null, accounts: null, contract: null, isAuthenticating: true, isAuthenticated: false };
 export default function Routes({ appProps }) {
-  // console.log("Routes");
+  // console.log(appProps.isAuthenticated);
   return (
     <Switch>
       {/* <div>
@@ -24,9 +24,8 @@ export default function Routes({ appProps }) {
       <h1>{appProps.storageValue}</h1>
       </div> */}
       
-      {/* <h1>{appProps.contract.address}</h1> */}
       {/* <h1>{appProps.specificAccount}</h1> */}
-      <UnauthenticatedRoute path="/" exact component={StartPage} appProps={appProps} />
+      <UnauthenticatedRoute path="/" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
       <AuthenticatedRoute path="/dashboard" exact component={Dashboard} appProps={appProps} />
 

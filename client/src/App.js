@@ -11,6 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Routes from "./Routes";
 import "./App.css";
 import getWeb3 from "./getWeb3";
+import Web3 from "web3";
 
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -60,20 +61,34 @@ const useStyles = makeStyles(theme => ({
 
 function App(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
-  const [isAuthenticated, userHasAuthenticated] = useState(true);
+  const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [toggle, setToggleDrawer] = useState({ left: false });
   const [LoginOrLogout, setLoginOrLogout] = useState("Login");
 
-
-  const [storageValue, setStorageValue] = useState(0);
   const [web3, setWeb3] = useState(null);
   const [accounts, setAccounts] = useState(null);
-  const [contract, setContract] = useState(null);
-  const [hiltiContract, sethiltiContract] = useState(null);
+  const [metaMaskAccount, setmetaMaskAccount] = useState(null);
 
-  const [specificAccount, setSpecificAccount] = useState("test");
+  // Account Props => siehe HiltiContract
+  const [currentAccount, setcurrentAccount] = useState(null);
+  const [toolList, settoolList] = useState(null);
+  const [hiltiTokenStorage, setHiltiTokenStorage] = useState(0);
+  const [creditedAmount, setCreditedAmount] = useState(0);
+  const [currentDiscount, setCurrentDiscount] = useState(0);
+
+
+  const [hiltiContract, sethiltiContract] = useState(null);
+  const [hiltiContractAccount, sethiltiContractAccount] = useState(null);
 
   const [historyCount, setHistoryCount] = useState(0);
+
+  // Data for Chart
+  const [xAxes, setxAxes] = useState(new Array());
+  const [yAxes, setyAxes] = useState(new Array());
+
+  // Data for Event Listener
+  const [events, setEvents] = useState(new Array());
+
 
 
 
@@ -81,9 +96,13 @@ function App(props) {
 
   let history = useHistory();
 
+  // window.ethereum.on('accountsChanged', function (accounts) {
+  //   // Time to reload your interface with accounts[0]!
+  //   console.log(accounts);
+  // })
 
   useEffect(() => {
-    onLoad();
+    // onLoad();
   }, []);
 
   useLayoutEffect(() => {
@@ -95,50 +114,51 @@ function App(props) {
       // Get network provider and web3 instance.
       console.log("crypto");
 
-      const web3 = await getWeb3();
+      const web3Metamask = await getWeb3();
 
-      setWeb3(!web3);
+      setWeb3(!web3Metamask);
 
       // Use web3 to get the user's accounts.
+      const metamaskUser = await web3Metamask.eth.getAccounts();
+      setmetaMaskAccount(metamaskUser);
+
+      // Get all Ganache Accounts for testing
+      // For Production/Main Net not needed
+      const provider = new Web3.providers.HttpProvider(
+        "http://127.0.0.1:7545"
+      );
+      const web3 = new Web3(provider);
       const accounts = await web3.eth.getAccounts();
       setAccounts(accounts);
+      sethiltiContractAccount(accounts[0]);
 
-      accounts.forEach(account => {
-        console.log(account);
-      });
+
+      // accounts.forEach(account => {
+      //   console.log(account);
+      // });
+      // console.log(metamaskUser);
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
       console.log("networkId");
       console.log(networkId);
 
-      // const deployedNetwork = SimpleStorageContract.networks[networkId];
-      // console.log("deployedNetwork");
-      // console.log(deployedNetwork);
-
-      // const instance = new web3.eth.Contract(
-      //   SimpleStorageContract.abi,
-      //   deployedNetwork && deployedNetwork.address,
-      // );
-
       const deployedNetworkHilti = HiltiContract.networks[networkId];
       console.log("deployedNetworkHilti");
       console.log(deployedNetworkHilti);
 
-      const hiltiContract = new web3.eth.Contract(
+      const hiltiContractInstance = new web3.eth.Contract(
         HiltiContract.abi,
         deployedNetworkHilti && deployedNetworkHilti.address,
       );
 
-      // console.log("instance // contract");
-      // console.log(instance._address);
-      // console.log(instance);
+      sethiltiContract(hiltiContractInstance);
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       // setContract(instance, await runExample(accounts, instance));
 
-      sethiltiContract(hiltiContract, await runExampleHilti(accounts, hiltiContract));
+      // sethiltiContract(hiltiContract, await runExampleHilti(accounts, hiltiContract));
       // }, 3000);
     } catch (error) {
       // Catch any errors for any of the above operations.
@@ -149,66 +169,6 @@ function App(props) {
       // "0x62ee598361d54Bc21E4C923c873866AfeDA94aF8"
     }
   }
-
-  async function onLoad() {
-    // try {
-    //   // await Auth.currentSession();
-    //   // userHasAuthenticated(true);
-    // }
-    // catch (e) {
-    //   if (e !== 'No current user') {
-    //     alert(e);
-    //   }
-    // }
-    setIsAuthenticating(false);
-    // console.log("onLoad finished");
-  }
-
-  async function runExample(accounts, contract) {
-    console.log("runExample");
-    // Stores a given value, 5 by default.
-    // await contract.methods.set(15).send({ from: accounts[0] });
-    // console.log(accounts);
-    // console.log(contract);
-
-    setSpecificAccount(accounts[0])
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
-
-    // Update state with the result.
-    setStorageValue(response);
-  };
-
-  async function runExampleHilti(accounts, contract) {
-    console.log("runExampleHilti");
-    console.log(contract);
-    // Stores a given value, 5 by default.
-    // const response = await contract.methods.get().call();
-    // const response = await contract.methods.addUser(accounts[1]).send({ from: accounts[0] }).then(async (res) => {
-    //   console.log("1");
-    //   console.log(res);
-    //   await contract.methods.addTool(accounts[5]).send({ from: accounts[0] }).then(async (res2) => {
-    //     console.log("2");
-    //     console.log(res2);
-    //     await contract.methods.registerTool(accounts[1], accounts[5]).send({ from: accounts[0] }).then(async (res3) => {
-    //       console.log("3");
-    //       console.log(res3);
-          const response = await contract.methods.fetchUserData(accounts[1]).call();
-      //   });
-      // });
-      console.log();
-    // });
-    // console.log(accounts);
-    // console.log(contract);
-
-    // setSpecificAccount(accounts[0])
-    // Get the value from the contract to prove it worked.
-    // const response = await contract.methods.get().call();
-
-    // Update state with the result.
-    setStorageValue(response[0]);
-
-  };
 
   async function handleLogout() {
     // await Auth.signOut();
@@ -310,7 +270,6 @@ function App(props) {
   return (
     // <div className="App container">
     <div className={classes.root}>
-      <h1>{storageValue}</h1>
       <Drawer open={toggle.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
       </Drawer>
@@ -336,8 +295,20 @@ function App(props) {
         </Toolbar>
       </AppBar>
       <Routes appProps={{
+        // Login or Logout
+        LoginOrLogout, setLoginOrLogout,
+        // Auth Helpers
         isAuthenticated, userHasAuthenticated, isAuthenticating, setIsAuthenticating,
-        storageValue, setStorageValue, contract, accounts, specificAccount, LoginOrLogout, setLoginOrLogout
+        // current Account => wird bei Login gesetzt
+        currentAccount, setcurrentAccount,
+        // wird für current Account gebraucht
+        hiltiTokenStorage, setHiltiTokenStorage,
+        creditedAmount, setCreditedAmount,
+        currentDiscount, setCurrentDiscount,
+        // Netzwerk Props
+        hiltiContract, hiltiContractAccount, accounts,
+        // data
+        xAxes, setxAxes, yAxes, setyAxes, events, setEvents
       }} />
     </div>
   );
