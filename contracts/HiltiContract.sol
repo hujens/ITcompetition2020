@@ -50,6 +50,12 @@ contract HiltiContract is HiltiToken, HiltiRole {
     event AccountCredited(address accountUser, uint256 amount);
     event DiscountCredited(address accountUser, uint256 amount);
     event HiltiTokenTransferred(address sender, address recipient, uint256 amount);
+    event UserAdded(address accountUser);
+    event ToolAdded(address accountTool);
+
+
+    
+
 
     /********************************************************************************************/
     /*                                       CONSTRUCTOR                                        */
@@ -117,6 +123,7 @@ contract HiltiContract is HiltiToken, HiltiRole {
             currentDiscount: 0,
             name: _name
         });
+        emit UserAdded(_account);
     }
 
     /**
@@ -136,6 +143,7 @@ contract HiltiContract is HiltiToken, HiltiRole {
             uploadRequest: false,
             name: _name
         });
+        emit ToolAdded(_account);
     }
 
     function get() public view returns (uint) {

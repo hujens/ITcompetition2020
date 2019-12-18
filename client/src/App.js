@@ -67,10 +67,24 @@ function App(props) {
 
   const [web3, setWeb3] = useState(null);
   const [accounts, setAccounts] = useState(null);
-  const [metaMaskAccount, setmetaMaskAccount] = useState(null);
+
+  // MetaMask
+  const [metaMaskAccount, setMetaMaskAccount] = useState(null);
+  const [metaMaskAccountName, setMetaMaskAccountName] = useState('None');
+  const [metaMaskAccountBalance, setMetaMaskAccountBalance] = useState(0);
+  const [metaMaskAccountDiscount, setMetaMaskAccountDiscount] = useState(0);
+  const [metaMaskAccountClaiming, setMetaMaskAccountClaiming] = useState(0);
+
 
   // Account Props => siehe HiltiContract
   const [currentAccount, setcurrentAccount] = useState(null);
+  const [currentAccountName, setcurrentAccountName] = useState(null);
+
+  const [currentToolAccount, setCurrentToolAccount] = useState(null);
+
+
+
+
   const [toolList, settoolList] = useState(null);
   const [hiltiTokenStorage, setHiltiTokenStorage] = useState(0);
   const [creditedAmount, setCreditedAmount] = useState(0);
@@ -96,10 +110,6 @@ function App(props) {
 
   let history = useHistory();
 
-  // window.ethereum.on('accountsChanged', function (accounts) {
-  //   // Time to reload your interface with accounts[0]!
-  //   console.log(accounts);
-  // })
 
   useEffect(() => {
     // onLoad();
@@ -120,7 +130,7 @@ function App(props) {
 
       // Use web3 to get the user's accounts.
       const metamaskUser = await web3Metamask.eth.getAccounts();
-      setmetaMaskAccount(metamaskUser);
+      setMetaMaskAccount(metamaskUser);
 
       // Get all Ganache Accounts for testing
       // For Production/Main Net not needed
@@ -153,6 +163,35 @@ function App(props) {
       );
 
       sethiltiContract(hiltiContractInstance);
+
+      // // Use web3 to get the user's accounts.
+      // await web3Metamask.eth.getAccounts().then(async (account) => {
+      //   console.log("account")
+      //   console.log(account)
+      //   setMetaMaskAccount(account);
+      //   await hiltiContractInstance.methods.fetchUserData(account).call().then(async (res) => {
+      //     setMetaMaskAccountName(res[4]);
+      //     setMetaMaskAccountDiscount(res[3]);
+      //     setMetaMaskAccountClaiming(res[2]);
+      //     await hiltiContractInstance.methods.balanceOf(account).call().then(balance => {
+      //       setMetaMaskAccountBalance(balance)
+      //     });
+      //   });
+      // });
+
+
+      window.ethereum.on('accountsChanged', async (accounts) => {
+        // Time to reload your interface with accounts[0]!
+        console.log(accounts);
+        await hiltiContractInstance.methods.fetchUserData(accounts[0]).call().then(async (res) => {
+          setMetaMaskAccountName(res[4]);
+          setMetaMaskAccountDiscount(res[3]);
+          setMetaMaskAccountClaiming(res[2]);
+          await hiltiContractInstance.methods.balanceOf(accounts[0]).call().then(balance => {
+            setMetaMaskAccountBalance(balance)
+          });
+        });
+      })
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
@@ -285,6 +324,18 @@ function App(props) {
           <Typography variant="h3" className={classes.title}>
             Menu
           </Typography>
+          <Typography variant="h3" className={classes.title}>
+            MetaMask Account
+          </Typography>
+          <Typography variant="h3" className={classes.title}>
+            {metaMaskAccountName}
+          </Typography>
+          <Typography variant="h3" className={classes.title}>
+            {metaMaskAccountBalance}
+          </Typography>
+          <Typography variant="h3" className={classes.title}>
+            {metaMaskAccountDiscount}
+          </Typography>
           <Button style={{ fontSize: 18 }} color="inherit" onClick={() => {
             if (isAuthenticated) {
               handleLogout();
@@ -301,6 +352,8 @@ function App(props) {
         isAuthenticated, userHasAuthenticated, isAuthenticating, setIsAuthenticating,
         // current Account => wird bei Login gesetzt
         currentAccount, setcurrentAccount,
+        currentAccountName, setcurrentAccountName,
+        currentToolAccount, setCurrentToolAccount,
         // wird für current Account gebraucht
         hiltiTokenStorage, setHiltiTokenStorage,
         creditedAmount, setCreditedAmount,
@@ -308,7 +361,7 @@ function App(props) {
         // Netzwerk Props
         hiltiContract, hiltiContractAccount, accounts,
         // data
-        xAxes, setxAxes, yAxes, setyAxes, events, setEvents
+        xAxes, setxAxes, yAxes, setyAxes, events, setEvents,
       }} />
     </div>
   );

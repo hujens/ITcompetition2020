@@ -97,38 +97,76 @@ export default function Login(props) {
         event.preventDefault();
         try {
             // await Auth.signIn(fields.email, fields.password);
-            if (email === "test@test.com" && password === "test") {
-                props.userHasAuthenticated(true)
-                props.history.push("/dashboard");
-                props.setLoginOrLogout("Logout");
-                props.setcurrentAccount(props.accounts[1]);
+            if (email === "test.test@hilti.com" && password === "test") {
                 await props.hiltiContract.methods.fetchUserData(props.accounts[1]).call().then(async (res) => {
                     console.log(res);
+                    props.setcurrentAccountName(res[4]);
                     if (res[0] === "0x0000000000000000000000000000000000000000") {
                         alert(
-                            `User not exist on the Blockchain => Creating a new one`,
+                            `Users not existing on the Blockchain => Creating a new one`,
                         );
                         try {
-                            console.log(props.accounts[1]);
+                            // console.log(props.accounts[1]);
                             await props.hiltiContract.methods.addUser(props.accounts[1], "Bob").send({ from: props.accounts[0] }).then(async () => {
                                 console.log("addUser");
-                                await props.hiltiContract.methods.addTool(props.accounts[3], "Hilti Saebelsaegen - WSR 22-A").send({ from: props.accounts[0], gas: 1000000 }).then(async (res) => {
-                                    console.log("addTool");
-                                    console.log(res);
-                                    await props.hiltiContract.methods.registerTool(props.accounts[1], props.accounts[3])
-                                        .send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
-                                            console.log("registerTool");
-                                            await props.hiltiContract.methods.requestUpload(props.accounts[3]).send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
-                                                console.log("requestUpload");
-                                                // als erstes Tool Daten holen
-                                                await props.hiltiContract.methods.fetchToolData(props.accounts[3]).call().then(res => {
-                                                    console.log(res);
-                                                    props.setxAxes(res[2]);
-                                                    props.setyAxes(res[1]);
+                                blockchainListener();
+                                await props.hiltiContract.methods.addTool(props.accounts[3], "Hilti Saebelsaegen - WSR 22-A")
+                                    .send({ from: props.accounts[0], gas: 1000000 }).then(async (res) => {
+                                        console.log("addTool");
+                                        console.log(res);
+                                        blockchainListener();
+                                        await props.hiltiContract.methods.registerTool(props.accounts[1], props.accounts[3])
+                                            .send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
+                                                console.log("registerTool");
+                                                blockchainListener();
+                                                await props.hiltiContract.methods.requestUpload(props.accounts[3]).send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
+                                                    console.log("requestUpload");
                                                     blockchainListener();
+                                                    // als erstes Tool Daten holen
+                                                });
+                                            });
+                                    });
+                            });
+                            // zusätzliche User Registrieren
+                            await props.hiltiContract.methods.addUser(props.accounts[2], "Tracy").send({ from: props.accounts[0] }).then(async () => {
+                                console.log("addUser");
+                                blockchainListener();
+                                await props.hiltiContract.methods.addUser(props.accounts[5], "Susi").send({ from: props.accounts[0] }).then(async () => {
+                                    console.log("addUser");
+                                    blockchainListener();
+                                    await props.hiltiContract.methods.addUser(props.accounts[6], "Paul").send({ from: props.accounts[0] }).then(async () => {
+                                        console.log("addUser");
+                                        blockchainListener();
+                                        await props.hiltiContract.methods.addUser(props.accounts[7], "Sofia").send({ from: props.accounts[0] }).then(async () => {
+                                            console.log("addUser");
+                                            blockchainListener();
+                                            await props.hiltiContract.methods.addUser(props.accounts[8], "Greg").send({ from: props.accounts[0] }).then(async () => {
+                                                console.log("addUser");
+                                                blockchainListener();
+                                                await props.hiltiContract.methods.addUser(props.accounts[9], "Glenn").send({ from: props.accounts[0] }).then(async () => {
+                                                    console.log("addUser");
+                                                    blockchainListener();
+                                                    // Register the Tool for Tracy
+                                                    await props.hiltiContract.methods.addTool(props.accounts[4], "Hilti DD 30-W light diamond drilling machine")
+                                                        .send({ from: props.accounts[0], gas: 1000000 }).then(async (res) => {
+                                                            console.log("addTool");
+                                                            console.log(res);
+                                                            blockchainListener();
+                                                            await props.hiltiContract.methods.registerTool(props.accounts[2], props.accounts[4])
+                                                                .send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
+                                                                    console.log("registerTool");
+                                                                    blockchainListener();
+                                                                    await props.hiltiContract.methods.requestUpload(props.accounts[4]).send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
+                                                                        console.log("requestUpload");
+                                                                        blockchainListener();
+                                                                        // als erstes Tool Daten holen
+                                                                    });
+                                                                });
+                                                        });
                                                 });
                                             });
                                         });
+                                    });
                                 });
                             });
                         } catch (e) {
@@ -137,22 +175,55 @@ export default function Login(props) {
                         }
                     }
                     else {
-                        props.setCreditedAmount(res[2]);
-                        props.setCurrentDiscount(res[3]);
-                        await props.hiltiContract.methods.balanceOf(props.accounts[1]).call().then(async (res) => {
-                            props.setHiltiTokenStorage(res);
-                            await props.hiltiContract.methods.fetchToolData(props.accounts[3]).call().then(res => {
-                                console.log(res);
-                                props.setxAxes(res[2]);
-                                props.setyAxes(res[1]);
-                                blockchainListener();
-                            });
-                        })
+                        alert(
+                            `Users are existing on the Blockchain => Ready to Use`,
+                        );
                     }
                 });
             }
-            else if (email === "test@test.com" && password === "test") {
+            else if (email === "bob.foreman@hilti.com" && password === "bob") {
+                props.userHasAuthenticated(true)
+                props.history.push("/dashboard");
+                props.setLoginOrLogout("Logout");
+                props.setcurrentAccount(props.accounts[1]);
                 // To do for other user account
+                await props.hiltiContract.methods.fetchUserData(props.accounts[1]).call().then(async (res) => {
+                    console.log(res);
+                    props.setcurrentAccountName(res[4]);
+                    props.setCreditedAmount(res[2]);
+                    props.setCurrentDiscount(res[3]);
+                    await props.hiltiContract.methods.balanceOf(props.accounts[1]).call().then(async (res) => {
+                        props.setHiltiTokenStorage(res);
+                        await props.hiltiContract.methods.fetchToolData(props.accounts[3]).call().then(res => {
+                            // console.log(res);
+                            props.setxAxes(res[2]);
+                            props.setyAxes(res[1]);
+                            props.setCurrentToolAccount(props.accounts[3]);
+                        });
+                    })
+                });
+            }
+            else if (email === "tracy.projectlead@hilti.com" && password === "tracy") {
+                props.userHasAuthenticated(true)
+                props.history.push("/dashboard");
+                props.setLoginOrLogout("Logout");
+                props.setcurrentAccount(props.accounts[2]);
+                // To do for other user account
+                await props.hiltiContract.methods.fetchUserData(props.accounts[2]).call().then(async (res) => {
+                    console.log(res);
+                    props.setcurrentAccountName(res[4]);
+                    props.setCreditedAmount(res[2]);
+                    props.setCurrentDiscount(res[3]);
+                    await props.hiltiContract.methods.balanceOf(props.accounts[2]).call().then(async (res) => {
+                        props.setHiltiTokenStorage(res);
+                        await props.hiltiContract.methods.fetchToolData(props.accounts[4]).call().then(res => {
+                            // console.log(res);
+                            props.setxAxes(res[2]);
+                            props.setyAxes(res[1]);
+                            props.setCurrentToolAccount(props.accounts[4]);
+                        });
+                    })
+                });
             }
             else {
                 handleClickOpen()
@@ -175,16 +246,17 @@ export default function Login(props) {
         // Event Listener out of the Blockchain
         props.hiltiContract.getPastEvents("allEvents",
             {
-                fromBlock: 'latest',
+                // fromBlock: 'latest',
                 toBlock: 'latest' // You can also specify 'latest'          
             })
             .then((events) => {
                 console.log("blockchainListener")
+                // console.log(props.events);
                 var tempData = props.events
                 const data = createData(events[0].id, events[0].type, events[0].event, events[0].blockNumber, events[0].blockHash);
                 tempData.push(data);
                 props.setEvents(tempData);
-                console.log(props.events)
+                // console.log(props.events)
             }
             );
     }
