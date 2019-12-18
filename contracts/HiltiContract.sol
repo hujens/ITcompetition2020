@@ -53,10 +53,6 @@ contract HiltiContract is HiltiToken, HiltiRole {
     event UserAdded(address accountUser);
     event ToolAdded(address accountTool);
 
-
-    
-
-
     /********************************************************************************************/
     /*                                       CONSTRUCTOR                                        */
     /********************************************************************************************/
