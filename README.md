@@ -2,7 +2,7 @@
 
 This is a contribution for the Hilti IT-competition 2020.
 
-> * Group Name: ???
+> * Group Name: ICentive
 > * Participants names: Bucher David, Hunhevicz Jens
 > * Project Title: A Crypto-Economic Incentive System for Tools Data Management
 
@@ -14,6 +14,8 @@ For the prototype, the [Ethereum](https://ethereum.org/) blockchain is used to:
 * manage devices and users using Ethereum addresses.
 * store and trace relevant IoT data by device in an unchangeable and transparent manner.
 * offering an automated incentive system through SmartContracts and the HILTI-token (ERC20).
+
+### How it works
 
 The goal was to create a win-win situation for HILTI and the tool users by creating a blockchain based incentive system. HILTI needs to upload relevant data of the tools from time to time (limited storage capability on edge devices), and construction sites usually have limited internet coverage. Therefore, automatic uploads are hardly possible. On the other side, the tool users could move the tools to locations with internet connectivity (e.g. at night during storage, during a break, ...) and upload the data. Having said that, currently the users have no incentive to do this. 
 
@@ -30,6 +32,8 @@ The system is opt-in, meaning the users can decide to not upload their data, and
 * proofing coorect tool usage for warranty reasons.
 * maybe: locking and unlocking devices over the blockchain (making theft less attractive). However, this could be an issue if there is no connection at usage time.
 
+### Why blockchain?
+
 Blockchain is used for the following reasons:
 * data is transparent and immutable. 
 * the whole process is automated through smart contracts.
@@ -37,7 +41,7 @@ Blockchain is used for the following reasons:
 
 If this level of transparancy is not wanted, a private blockchain might be considered.
 
-***Important***: The introduced concepts are more exemplary and should showcase the potential of crypto-economic incentive systems. The system would need to be thought through carefully. We do not guarantee any functionality. Finally, the code is not secure. Do not use for production!
+***Important***: The introduced concepts are more exemplary and should showcase the potential of crypto-economic incentive systems. The system would need to be reviewed and tested carefully. We do not guarantee any functionality. Finally, the code is not secure. Do not use for production!
 
 ## Category
 Our solution targets the following categories:
