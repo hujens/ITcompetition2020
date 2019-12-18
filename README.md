@@ -6,6 +6,15 @@ This is a contribution for the Hilti IT-competition 2020.
 > * Participants names: Bucher David, Hunhevicz Jens
 > * Project Title: A Crypto-Economic Incentive System for Tools Data Management
 
+***Important***: The introduced concepts are exemplary and should showcase the potential of the solution. The system would need to be reviewed and tested carefully. We do not guarantee any functionality. Finally, the code is not secure. Do not use for production!
+
+## Category
+Our solution targets the following categories:
+
+* **No connectivity at all time (Topic 2)**:
+Incentivizing a trusted data upload without constant internet connection. The user uploads data when there is connection available and earns HILTI tokens instead.
+* **Trust and privacy concerns (Topic 4)**: Trust - Data can be traced and validated on the ledger. Privacy - devices and users can access their service via blockchain authentication if wanted.
+
 ## Solution
 
 Our solution offers the opportunity to combine new business models with challenges regarding IoT device data management by using crypto-economic incentive design with the HILTI-token.
@@ -40,15 +49,6 @@ Blockchain is used for the following reasons:
 * the rules are unchangeable and transparently encoded in the smart contracts. HILTI tokens can only be earned in predefined ways. The tokens can be exchanged peer-to-peer.
 
 If this level of transparancy is not wanted, a private blockchain might be considered.
-
-***Important***: The introduced concepts are more exemplary and should showcase the potential of crypto-economic incentive systems. The system would need to be reviewed and tested carefully. We do not guarantee any functionality. Finally, the code is not secure. Do not use for production!
-
-## Category
-Our solution targets the following categories:
-
-* **No connectivity at all time (Topic 2)**:
-Incentivizing a trusted data upload without constant internet connection at times when there is connection.
-* **Trust and privacy concerns (Topic 4)**: Trust - Data can be traced and validated on the ledger. Privacy - devices and users can access their service via blockchain authentication if wanted.
 
 ## Prerequisites
 
