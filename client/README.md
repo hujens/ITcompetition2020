@@ -1,68 +1,58 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# HILTI IT Competition 2020 - Client
 
-## Available Scripts
+This is a the documentation for the prototype developed fot the Hilti IT-competition 2020.
+The client was developed based on the React Framwork. React is a JavaScript library for creating user interfaces. It was released by Facebook under a BSD license in 2013 and has been making waves ever since, having a lasting impact on the entire JavaScript front-end landscape. With React, virtual DOMs and excellent rendering performance are achieved. In addition, it offers a modular component architecture that serves as a basis for modular and easily comprehensible frontend code.
 
-In the project directory, you can run:
+***Important***: The explained functions and structure of the prototype are shown in principle. For detailed questions please contact the developers!
 
-### `yarn start`
+## Principle Structure
+The source code consist of 4 specific folders, which are: 
+> * assets: Background images and stylings
+> * components: Functions for routing an its authentication
+> * containers: Contains most of the functions and frontend data of the prototype
+> * contracts: Migrated SmartContracts and the HILTI-token (ERC20) for Blockchain operations
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Next to it are the start function of the program and imports which are necessary for the block chain connection.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Containers -> Main Folder
 
-### `yarn test`
+Following the most important functions and and specifications to be observed are described
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Login.js
 
-### `yarn build`
+When landing on the login page, the user must first use a specific email address. This would be:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* **Email: test.test@hilti.com**
+* **Password: test.test@hilti.com**
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+This generates, as seen in Line 100, all users, tools with specific addresses on the blockchain. This is done using the contract function [addUser].
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The following users and tools are generated and assigned to each other
 
-### `yarn eject`
+* **Bob     ->      Hilti Saebelsaegen - WSR 22-A**
+* **Tracy   ->      Hilti DD 30-W light diamond drilling machine**
+* **Susi    ->      No Tool registered**
+* **Paul    ->      No Tool registered**
+* **Greg    ->      No Tool registered**
+* **Glenn   ->      No Tool registered**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If users and tools are already registered on the block chain, the following login can be used.
+The corresponding code can be seen in line 184 and line 206
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* **Email: bob.foreman@hilti.com**
+* **Password: bob**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* **Email: tracy.projectlead@hilti.com**
+* **Password: tracy**
 
-## Learn More
+If the login is successful, the user is redirected to the dashboard after his data has been retrieved from the block chain. The user's data structure can be seen in the contract [conracts/HiltiContract.sol]. Retrieved parameters are:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* **creditedAmount**
+* **currentDiscount**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Dashboard.js
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
