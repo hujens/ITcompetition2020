@@ -53,6 +53,16 @@ If the login is successful, the user is redirected to the dashboard after his da
 
 ### Dashboard.js
 
+The following picture shows the dashboard for the viewer. Underlying script is the dashboard.js
 
+text: ![alt test](screenshots/Screenshot.jpg)
+
+On the right side there are three different displays. These are: 
+
+* **Current account balance Hilit Token**
+* **Current Discount**
+* **Credited Tokens**
+
+In the tab Hilti Token the user can perform different actions by two buttons. First, he can get a discount on his next purchase at Hilti by redeeming his token. Secondly he can send a certain number of tokens to another user. 
 
 

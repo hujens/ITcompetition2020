@@ -17867,12 +17867,12 @@
         }
       },
       "links": {},
-      "address": "0xa93C7D051De738dA430Ad0C7D7b550C8bc9DB255",
-      "transactionHash": "0xbf7b050c75419a5bf4650cd7f030681d518a7e774c9477a4dc46c23fa26d5494"
+      "address": "0x573596287080F8fc766C1FAbD550467d08Bb5614",
+      "transactionHash": "0x0bfe7272fbbcb5b698ae613cdceb2019d754073e449b119377cbc7e2b8155056"
     }
   },
   "schemaVersion": "3.0.19",
-  "updatedAt": "2020-01-19T18:46:41.964Z",
+  "updatedAt": "2020-01-23T09:49:48.286Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {

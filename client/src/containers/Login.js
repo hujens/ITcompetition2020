@@ -98,6 +98,7 @@ export default function Login(props) {
         try {
             // await Auth.signIn(fields.email, fields.password);
             if (email === "test.test@hilti.com" && password === "test") {
+                console.log(props.hiltiContract);
                 await props.hiltiContract.methods.fetchUserData(props.accounts[1]).call().then(async (res) => {
                     console.log(res);
                     props.setcurrentAccountName(res[4]);
@@ -107,7 +108,7 @@ export default function Login(props) {
                         );
                         try {
                             // console.log(props.accounts[1]);
-                            await props.hiltiContract.methods.addUser(props.accounts[1], "Bob").send({ from: props.accounts[0] }).then(async () => {
+                            await props.hiltiContract.methods.addUser(props.accounts[1], "Bob").send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
                                 console.log("addUser");
                                 blockchainListener();
                                 await props.hiltiContract.methods.addTool(props.accounts[3], "Hilti Saebelsaegen - WSR 22-A")
@@ -128,22 +129,22 @@ export default function Login(props) {
                                     });
                             });
                             // zusätzliche User Registrieren
-                            await props.hiltiContract.methods.addUser(props.accounts[2], "Tracy").send({ from: props.accounts[0] }).then(async () => {
+                            await props.hiltiContract.methods.addUser(props.accounts[2], "Tracy").send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
                                 console.log("addUser");
                                 blockchainListener();
-                                await props.hiltiContract.methods.addUser(props.accounts[5], "Susi").send({ from: props.accounts[0] }).then(async () => {
+                                await props.hiltiContract.methods.addUser(props.accounts[5], "Susi").send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
                                     console.log("addUser");
                                     blockchainListener();
-                                    await props.hiltiContract.methods.addUser(props.accounts[6], "Paul").send({ from: props.accounts[0] }).then(async () => {
+                                    await props.hiltiContract.methods.addUser(props.accounts[6], "Paul").send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
                                         console.log("addUser");
                                         blockchainListener();
-                                        await props.hiltiContract.methods.addUser(props.accounts[7], "Sofia").send({ from: props.accounts[0] }).then(async () => {
+                                        await props.hiltiContract.methods.addUser(props.accounts[7], "Sofia").send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
                                             console.log("addUser");
                                             blockchainListener();
-                                            await props.hiltiContract.methods.addUser(props.accounts[8], "Greg").send({ from: props.accounts[0] }).then(async () => {
+                                            await props.hiltiContract.methods.addUser(props.accounts[8], "Greg").send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
                                                 console.log("addUser");
                                                 blockchainListener();
-                                                await props.hiltiContract.methods.addUser(props.accounts[9], "Glenn").send({ from: props.accounts[0] }).then(async () => {
+                                                await props.hiltiContract.methods.addUser(props.accounts[9], "Glenn").send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
                                                     console.log("addUser");
                                                     blockchainListener();
                                                     // Register the Tool for Tracy
@@ -153,10 +154,10 @@ export default function Login(props) {
                                                             console.log(res);
                                                             blockchainListener();
                                                             await props.hiltiContract.methods.registerTool(props.accounts[2], props.accounts[4])
-                                                                .send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
+                                                                .send({ from: props.accounts[0], gas: 10000000 }).then(async () => {
                                                                     console.log("registerTool");
                                                                     blockchainListener();
-                                                                    await props.hiltiContract.methods.requestUpload(props.accounts[4]).send({ from: props.accounts[0], gas: 1000000 }).then(async () => {
+                                                                    await props.hiltiContract.methods.requestUpload(props.accounts[4]).send({ from: props.accounts[0], gas: 10000000 }).then(async () => {
                                                                         console.log("requestUpload");
                                                                         blockchainListener();
                                                                         // als erstes Tool Daten holen

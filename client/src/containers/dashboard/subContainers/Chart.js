@@ -47,7 +47,8 @@ export default function Chart(props) {
   return (
     <React.Fragment>
       {/* <Title>Today</Title> */}
-      <Title>{props.appProps.currentAccountName}</Title>
+      {/* <Title>{props.appProps.currentAccountName}</Title> */}
+      <Title>{props.appProps.accounts[0]}</Title>
       <ResponsiveContainer>
         <LineChart
           data={data}

@@ -139,6 +139,7 @@ function App(props) {
       );
       const web3 = new Web3(provider);
       const accounts = await web3.eth.getAccounts();
+      console.log(accounts);
       setAccounts(accounts);
       sethiltiContractAccount(accounts[0]);
 
