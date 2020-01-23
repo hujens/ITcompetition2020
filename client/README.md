@@ -65,13 +65,18 @@ On the right side there are three different displays. These are:
 
 In the tab Hilti Token the user can perform different actions by two buttons. First, he can get a discount on his next purchase at Hilti by redeeming his token. Secondly he can send a certain number of tokens to another user. 
 
-Below this is the value of the discount he currently gets. The lowest tab lists the tokens to be claimed. Every time he performs a data upload he gets a token which is called a Credited Token. 
+Below this, the value of the discount he currently gets is shown. The lowest tab lists the tokens to be claimed. Every time he performs a data upload he gets a token which is called a credited token. 
 
-The middle of the dashboard shows the history of his data. In the prototype random values between 0 and 100 are selected. This could then be replaced in a testing environment with different sensor data from the device, such as usage time, acceleration and power. 
+The middle of the dashboard shows the history of his data. In the prototype random values between 0 and 100 are selected. This could then be replaced in a testing environment with different sensor data from the device, such as usage time, acceleration and powerconsumption. 
 
-At the bottom of the dashboard is a list of all transactions to or from the block chain. These are:
+At the bottom of the dashboard a table of all transactions to or from the blockchain is listed. These are:
 
 * **Data upload**
 * **Claiming**
 * **Transfer**
 
+This guarantees consistency and re-examination by the user and enables him to develop a basic understanding of the methodology.
+
+The functions and the graphical interface can be found in the *dashboard* folder, where the data chart and title is defined in a separate folder called *subContainers*. 
+
+Do not hesitate to explore this sourcecode and we are looking forward to your feedback. 
