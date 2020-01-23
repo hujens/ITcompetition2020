@@ -22,7 +22,7 @@ The users land on the login page. When starting the application for the first ti
 * **Email: test.test@hilti.com**
 * **Password: test.test@hilti.com**
 
-This generates (as seen in Line 100) all users and tools with specific addresses on the blockchain (calling the smart contract functions `addUser()`, `addTool()`, and `registerTool()`). This was done to enalbe a nice experience with the prototype without extensive registration proceedures of all tool and users. With that, all demo users and tool are set up as follows:
+This generates (as seen in Line 100) all users and tools with specific addresses on the blockchain (calling the smart contract functions `addUser()`, `addTool()`, and `registerTool()`). This was done to enable a nice experience with the prototype without extensive registration proceedures of all tool and users. With that, all demo users and tool are set up as follows:
 
 * **Bob     ->      Hilti Saebelsaegen - WSR 22-A**
 * **Tracy   ->      Hilti DD 30-W light diamond drilling machine**
