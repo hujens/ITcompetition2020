@@ -55,7 +55,7 @@ If the login is successful, the user is redirected to the dashboard after his da
 
 The following picture shows the dashboard for the viewer. Underlying script is the dashboard.js
 
-text: ![alt test](screenshots/Screenshot.jpg)
+Dashboard Overview: ![alt test](screenshots/Screenshot.jpg)
 
 On the right side there are three different displays. These are: 
 
@@ -65,4 +65,13 @@ On the right side there are three different displays. These are:
 
 In the tab Hilti Token the user can perform different actions by two buttons. First, he can get a discount on his next purchase at Hilti by redeeming his token. Secondly he can send a certain number of tokens to another user. 
 
+Below this is the value of the discount he currently gets. The lowest tab lists the tokens to be claimed. Every time he performs a data upload he gets a token which is called a Credited Token. 
+
+The middle of the dashboard shows the history of his data. In the prototype random values between 0 and 100 are selected. This could then be replaced in a testing environment with different sensor data from the device, such as usage time, acceleration and power. 
+
+At the bottom of the dashboard is a list of all transactions to or from the block chain. These are:
+
+* **Data upload**
+* **Claiming**
+* **Transfer**
 
