@@ -60,12 +60,10 @@ The credited tokens show the HILTI tokens that the user can claim by pressing th
 
 Below this, the value of the discount he currently gets is shown. To increase the discount, claimed tokens need to be exchanged for this. This can be performed using the `Get Discount` button. With the `Send` button tokens can be also sent to other registered users, in case they don't want to be spent for discounts.
 
-At the bottom of the dashboard a table of all transactions to or from the blockchain is listed. These are:
+At the bottom of the dashboard a table of all transactions to or from the blockchain is listed. The user can verify the transaction in a transparent manner and has a visualization of the blockchain principles at hand. The following transactions are logged:
 
-* **Data upload**
+* **DataUpload**
 * **Claiming**
 * **Transfer**
-
-This guarantees consistency and re-examination by the user and enables him to develop a basic understanding of the methodology.
 
 Do not hesitate to explore the sourcecode and ask questions.
