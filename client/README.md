@@ -68,4 +68,4 @@ At the bottom of the dashboard a table of all transactions to or from the blockc
 
 This guarantees consistency and re-examination by the user and enables him to develop a basic understanding of the methodology.
 
-Do not hesitate to explore this sourcecode and we are looking forward to your feedback. 
+Do not hesitate to explore the sourcecode and ask questions.
