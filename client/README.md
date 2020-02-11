@@ -20,7 +20,7 @@ In the following the most important functions and specifications are described a
 The users land on the login page. When starting the application for the first time, the following login credentials should be used to initiate the application:
 
 * **Email: test.test@hilti.com**
-* **Password: test.test@hilti.com**
+* **Password: test**
 
 This generates (as seen in Line 100) all users and tools with specific addresses on the blockchain (calling the smart contract functions `addUser()`, `addTool()`, and `registerTool()`). This was done to enable a nice experience with the prototype without extensive registration proceedures of all tool and users. With that, all demo users and tool are set up as follows:
 
