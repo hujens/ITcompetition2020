@@ -1,6 +1,6 @@
 # HILTI IT Competition 2020 - Client
 
-This is a documentation for the client of our solution.
+This is a documentation for the client of our solution. The client interacts with the smart contracts of this solution.
 It was developed based on the [React Framework](https://reactjs.org/). React is a JavaScript library for creating user interfaces. With React, virtual DOMs and excellent rendering performance are achieved. In addition, it offers a modular component architecture that serves as a basis for modular and easily comprehensible frontend code.
 
 ***Important***: The explained functions and structure of the prototype are shown on a high level. For detailed questions please contact the developers!

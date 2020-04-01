@@ -47,6 +47,7 @@ Blockchain is used for the following reasons:
 * data is transparent and immutable. 
 * the whole process is automated through smart contracts.
 * the rules are unchangeable and transparently encoded in the smart contracts. HILTI tokens can only be earned in predefined ways. The tokens can be exchanged peer-to-peer.
+* data on the blockchain enables the crypto-economic incentive design
 
 If this level of transparancy is not wanted, a private blockchain might be considered.
 
