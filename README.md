@@ -1,7 +1,6 @@
 # HILTI IT Competition 2020
 
-This is a contribution for the Hilti IT-competition 2020.
-
+This is a contribution for the Hilti IT-competition 2020. See also the [Youtube Video](https://youtu.be/3d117sKsYOw) for more information.
 > * Group Name: ICentive
 > * Participants names: Bucher David, Hunhevicz Jens
 > * Project Title: A Crypto-Economic Incentive System for Tools Data Management
